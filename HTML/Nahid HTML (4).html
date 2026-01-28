@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmuda Khanum | My Dearest Shundori Pakhiiiiiiiiiiiiiii</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="background-hearts" id="backgroundHearts"></div>
+    <div class="background-petals" id="backgroundPetals"></div>
+    <div class="particles-container" id="particlesContainer"></div>
+    
+    <!-- Main container -->
+    <div class="container">
+        <!-- Loading screen -->
+        <div class="loading-screen active" id="loadingScreen">
+            <div class="loading-content">
+                <div class="loading-heart">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 class="loading-text">Loading our special moments...</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Girlfriend Selection Screen -->
+        <div class="selection-screen" id="selectionScreen">
+            <div class="glass-card selection-card">
+                <div class="selection-header">
+                    <h1 class="main-title">My Dearest <span class="highlight">Shundori Pakhiiiiiiiiiiiiiii</span></h1>
+                    <p class="subtitle">Select your beautiful girlfriend</p>
+                    <div class="hearts-divider">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div class="girlfriend-cards">
+                    <div class="girlfriend-card active" data-gf="mahmuda">
+                        <div class="gf-avatar">
+                            <div class="avatar-img" style="background-color: #ff9eb5;"></div>
+                            <div class="avatar-badge">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                        <h3 class="gf-name">Mahmuda Khanum</h3>
+                        <p class="gf-nickname">"My Shundori Pakhi"</p>
+                        <div class="gf-tags">
+                            <span class="gf-tag">My Love</span>
+                            <span class="gf-tag">My Everything</span>
+                        </div>
+                        <button class="select-btn" data-gf="mahmuda">
+                            <i class="fas fa-heart"></i> Select My Love
+                        </button>
+                    </div>
+                    
+                    <div class="girlfriend-card" data-gf="custom">
+                        <div class="gf-avatar">
+                            <div class="avatar-img" style="background-color: #b19cd9;">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </div>
+                        <h3 class="gf-name">Add Your Love</h3>
+                        <p class="gf-nickname">"Create Custom"</p>
+                        <div class="gf-tags">
+                            <span class="gf-tag">Customize</span>
+                            <span class="gf-tag">Personal</span>
+                        </div>
+                        <button class="select-btn" data-gf="custom">
+                            <i class="fas fa-plus-circle"></i> Add New
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="selection-footer">
+                    <p class="romantic-quote">"You are the most beautiful chapter in my life's story"</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Screen (initially hidden) -->
+        <div class="main-screen" id="mainScreen">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="back-btn" id="backButton">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="header-title">
+                        <h1>Mahmuda <span class="love-emoji">❤️</span></h1>
+                        <p class="header-subtitle">My Dearest Shundori Pakhiiiiiiiiiiiiiii</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="header-btn" id="musicToggle">
+                        <i class="fas fa-music"></i>
+                        <span class="btn-label">Music</span>
+                    </button>
+                    <button class="header-btn" id="heartsRainBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="btn-label">Hearts</span>
+                    </button>
+                    <button class="header-btn" id="petalsRainBtn">
+                        <i class="fas fa-leaf"></i>
+                        <span class="btn-label">Petals</span>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="content-area">
+                <!-- Left Column: Music Player & Messages -->
+                <div class="left-column">
+                    <!-- Music Player -->
+                    <div class="glass-card music-player">
+                        <div class="player-header">
+                            <h3><i class="fas fa-music"></i> Our Song</h3>
+                            <div class="music-visualizer" id="musicVisualizer">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="player-controls">
+                            <button class="control-btn" id="prevBtn">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button class="control-btn play-btn" id="playBtn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="control-btn" id="nextBtn">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="player-info">
+                            <div class="song-info">
+                                <h4 id="songTitle">Romantic Melody</h4>
+                                <p id="songArtist">For My Love</p>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar" id="musicProgressBar">
+                                <div class="progress-fill" id="musicProgressFill"></div>
+                            </div>
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span id="totalTime">2:30</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message Section -->
+                    <div class="glass-card message-section">
+                        <h3><i class="fas fa-comment-heart"></i> Message for My Shundori Pakhi</h3>
+                        <div class="message-display" id="messageDisplay">
+                            <p class="typing-message" id="typingMessage">My dearest Mahmuda, you light up my world like no one else. Every moment with you is a treasure I cherish forever. You are my Shundori Pakhi, the most beautiful bird in my sky.</p>
+                        </div>
+                        
+                        <div class="message-input">
+                            <textarea id="messageInput" placeholder="Type your romantic message here...">My dearest Mahmuda, you light up my world like no one else. Every moment with you is a treasure I cherish forever. You are my Shundori Pakhi, the most beautiful bird in my sky.</textarea>
+                            <button class="send-btn" id="sendMessageBtn">
+                                <i class="fas fa-paper-plane"></i> Update Message
+                            </button>
+                        </div>
+                        
+                        <div class="quick-messages">
+                            <p>Quick messages:</p>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" data-msg="I love you more than anything, my Shundori Pakhi!">I Love You</button>
+                                <button class="quick-btn" data-msg="Thinking of you always brings a smile to my face.">Thinking of You</button>
+                                <button class="quick-btn" data-msg="You are the most beautiful person in my world.">You're Beautiful</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column: Gallery -->
+                <div class="middle-column">
+                    <div class="gallery-container">
+                        <div class="gallery-header">
+                            <h3><i class="fas fa-images"></i> Our Memory Gallery</h3>
+                            <div class="gallery-actions">
+                                <label class="upload-btn" for="imageUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i> Upload Photo
+                                </label>
+                                <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+                                <button class="gallery-action-btn" id="clearGallery">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-grid" id="galleryGrid">
+                            <!-- Default images -->
+                            <div class="gallery-item">
+                                <div class="gallery-img" style="background-color: #ffb6c1;">
+                                    <div class="img-overlay">
+                                        <i class="fas fa-heart"></i>
+                                        <p>Our First Meeting</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img" style="background-color: #d8bfd8;">
+                                    <div class="img-overlay">
+                                        <i class="fas fa-star"></i>
+                                        <p>Special Date</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img" style="background-color: #b0e0e6;">
+                                    <div class="img-overlay">
+                                        <i class="fas fa-kiss-wink-heart"></i>
+                                        <p>Happy Moments</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img" style="background-color: #ffd700;">
+                                    <div class="img-overlay">
+                                        <i class="fas fa-gem"></i>
+                                        <p>My Treasure</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-empty" id="galleryEmpty">
+                            <i class="fas fa-images"></i>
+                            <p>No photos yet. Upload some beautiful memories!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Reactions & Emojis -->
+                <div class="right-column">
+                    <!-- Reaction Buttons -->
+                    <div class="glass-card reactions-section">
+                        <h3><i class="fas fa-heart-circle-bolt"></i> Send Love Reactions</h3>
+                        <div class="reaction-buttons">
+                            <button class="reaction-btn love-btn" data-reaction="love">
+                                <i class="fas fa-heart"></i>
+                                <span>Love</span>
+                            </button>
+                            <button class="reaction-btn kiss-btn" data-reaction="kiss">
+                                <i class="fas fa-kiss-wink-heart"></i>
+                                <span>Kiss</span>
+                            </button>
+                            <button class="reaction-btn hug-btn" data-reaction="hug">
+                                <i class="fas fa-hands"></i>
+                                <span>Hug</span>
+                            </button>
+                            <button class="reaction-btn flower-btn" data-reaction="flower">
+                                <i class="fas fa-spa"></i>
+                                <span>Flower</span>
+                            </button>
+                        </div>
+                        
+                        <div class="reaction-stats">
+                            <p>Reactions sent: <span id="reactionCount">0</span></p>
+                            <button class="clear-reactions" id="clearReactions">
+                                <i class="fas fa-broom"></i> Clear All
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Emojis Area -->
+                    <div class="glass-card emojis-section">
+                        <h3><i class="fas fa-smile-wink"></i> Floating Emojis</h3>
+                        <p>Click to release emojis or tap the buttons below</p>
+                        
+                        <div class="emoji-display" id="emojiDisplay">
+                            <!-- Emojis will appear here -->
+                        </div>
+                        
+                        <div class="emoji-buttons">
+                            <button class="emoji-btn" data-emoji="❤️">❤️ Love</button>
+                            <button class="emoji-btn" data-emoji="💖">💖 Sparkle</button>
+                            <button class="emoji-btn" data-emoji="😘">😘 Kiss</button>
+                            <button class="emoji-btn" data-emoji="🌹">🌹 Rose</button>
+                            <button class="emoji-btn" data-emoji="✨">✨ Magic</button>
+                        </div>
+                        
+                        <button class="emoji-explosion" id="emojiExplosion">
+                            <i class="fas fa-bomb"></i> Emoji Explosion
+                        </button>
+                    </div>
+                    
+                    <!-- Love Meter -->
+                    <div class="glass-card love-meter">
+                        <h3><i class="fas fa-heartbeat"></i> Our Love Meter</h3>
+                        <div class="meter-container">
+                            <div class="meter-fill" id="meterFill"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>Growing</span>
+                            <span id="lovePercentage">100%</span>
+                            <span>Infinite</span>
+                        </div>
+                        <button class="boost-love" id="boostLove">
+                            <i class="fas fa-heart-circle-plus"></i> Boost Our Love
+                        </button>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <p class="footer-heart">
+                        <i class="fas fa-heart"></i>
+                        <span>Made with infinite love for Mahmuda Khanum, my Shundori Pakhiiiiiiiiiiiiiii</span>
+                        <i class="fas fa-heart"></i>
+                    </p>
+                    <p class="footer-date">Today is <span id="currentDate"></span> - Another beautiful day with you</p>
+                </div>
+            </footer>
+        </div>
+        
+        <!-- Lightbox for image preview -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <button class="lightbox-close" id="lightboxClose">&times;</button>
+                <div class="lightbox-img-container">
+                    <img src="" alt="" id="lightboxImg">
+                </div>
+                <div class="lightbox-nav">
+                    <button class="lightbox-nav-btn" id="lightboxPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="lightbox-nav-btn" id="lightboxNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Audio elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="loveSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="kissSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-cute-love-smile-1657.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="hugSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-romantic-heartbeat-1152.mp3" type="audio/mpeg">
+    </audio>
+
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0b2e 0%, #4a1e6e 50%, #8b3d9a 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Elements */
+        .background-hearts, .background-petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0b2e 0%, #4a1e6e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease;
+        }
+
+        .loading-screen.active {
+            opacity: 1;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+        }
+
+        .loading-heart {
+            font-size: 4rem;
+            color: #ff4d8d;
+            margin-bottom: 2rem;
+            animation: heartbeat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .loading-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffb6c1;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff4d8d, #ff9eb5);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Selection Screen */
+        .selection-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .selection-card {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .selection-header {
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ff9eb5, #ff4d8d, #d8bfd8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ffb6c1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hearts-divider {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            color: #ff4d8d;
+            font-size: 1.5rem;
+        }
+
+        /* Girlfriend Cards */
+        .girlfriend-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .girlfriend-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 280px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .girlfriend-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(255, 77, 141, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .girlfriend-card.active {
+            border-color: #ff4d8d;
+            background: rgba(255, 77, 141, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 77, 141, 0.2);
+        }
+
+        .gf-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .avatar-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #ffd700;
+            color: #8b3d9a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .gf-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .gf-nickname {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ffb6c1;
+            margin-bottom: 1rem;
+        }
+
+        .gf-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gf-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .select-btn {
+            background: linear-gradient(90deg, #ff4d8d, #ff9eb5);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .select-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+        }
+
+        .selection-footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .romantic-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffb6c1;
+            font-style: italic;
+        }
+
+        /* Main Screen */
+        .main-screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .main-screen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Header */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 77, 141, 0.2);
+            transform: scale(1.1);
+        }
+
+        .header-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ff9eb5, #ff4d8d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ffb6c1;
+        }
+
+        .love-emoji {
+            font-size: 2.5rem;
+            vertical-align: middle;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header-btn:hover {
+            background: rgba(255, 77, 141, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn-label {
+            font-size: 0.9rem;
+        }
+
+        /* Content Area */
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Music Player */
+        .music-player {
+            margin-bottom: 2rem;
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-header h3 {
+            font-size: 1.3rem;
+            color: #ffb6c1;
+        }
+
+        .music-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 30px;
+            gap: 3px;
+        }
+
+        .music-visualizer .bar {
+            width: 4px;
+            background: linear-gradient(to top, #ff4d8d, #ff9eb5);
+            border-radius: 2px;
+            animation: musicBars 1.5s infinite ease-in-out;
+        }
+
+        .music-visualizer .bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+        .music-visualizer .bar:nth-child(2) { height: 20px; animation-delay: 0.2s; }
+        .music-visualizer .bar:nth-child(3) { height: 30px; animation-delay: 0.4s; }
+        .music-visualizer .bar:nth-child(4) { height: 20px; animation-delay: 0.6s; }
+        .music-visualizer .bar:nth-child(5) { height: 10px; animation-delay: 0.8s; }
+
+        @keyframes musicBars {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 77, 141, 0.3);
+            transform: scale(1.1);
+        }
+
+        .play-btn {
+            background: linear-gradient(90deg, #ff4d8d, #ff9eb5);
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .player-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .song-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .song-info p {
+            color: #ffb6c1;
+            font-size: 0.9rem;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 5px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff4d8d;
+            cursor: pointer;
+        }
+
+        .progress-container {
+            margin-top: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        #musicProgressFill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff4d8d, #ff9eb5);
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #ffb6c1;
+        }
+
+        /* Message Section */
+        .message-section {
+            margin-bottom: 2rem;
+        }
+
+        .message-section h3 {
+            font-size: 1.3rem;
+            color: #ffb6c1;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-display {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            min-height: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .typing-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            color: #fff;
+        }
+
+        .message-input textarea {
+            width: 100%;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .message-input textarea:focus {
+            outline: none;
+            border-color: #ff4d8d;
+        }
+
+        .send-btn {
+            background: linear-gradient(90deg, #4a1e6e, #8b3d9a);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 61, 154, 0.4);
+        }
+
+        .quick-messages {
+            margin-top: 1.5rem;
+        }
+
+        .quick-messages p {
+            margin-bottom: 0.8rem;
+            color: #ffb6c1;
+        }
+
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .quick-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            background: rgba(255, 77, 141, 0.3);
+        }
+
+        /* Gallery */
+        .gallery-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 100%;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-header h3 {
+            font-size: 1.3rem;
+            color: #ffb6c1;
+        }
+
+        .gallery-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .upload-btn {
+            background: linear-gradient(90deg, #ff4d8d, #ff9eb5);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+        }
+
+        .gallery-action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-action-btn:hover {
+            background: rgba(255, 77, 141, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .gallery-item:hover .img-overlay {
+            transform: translateY(0);
+        }
+
+        .img-overlay i {
+            font-size: 1.5rem;
+            color: #ff4d8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .img-overlay p {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .gallery-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            text-align: center;
+            color: #ffb6c1;
+        }
+
+        .gallery-empty i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Reactions Section */
+        .reactions-section, .emojis-section, .love-meter {
+            margin-bottom: 2rem;
+        }
+
+        .reactions-section h3, .emojis-section h3, .love-meter h3 {
+            font-size: 1.3rem;
+            color: #ffb6c1;
+            margin-bottom: 1.5rem;
+        }
+
+        .reaction-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reaction-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .reaction-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .reaction-btn.love-btn:hover {
+            background: rgba(255, 77, 141, 0.3);
+        }
+
+        .reaction-btn.kiss-btn:hover {
+            background: rgba(255, 182, 193, 0.3);
+        }
+
+        .reaction-btn.hug-btn:hover {
+            background: rgba(176, 224, 230, 0.3);
+        }
+
+        .reaction-btn.flower-btn:hover {
+            background: rgba(216, 191, 216, 0.3);
+        }
+
+        .reaction-btn i {
+            font-size: 2rem;
+        }
+
+        .reaction-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .clear-reactions {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-reactions:hover {
+            background: rgba(255, 77, 141, 0.3);
+        }
+
+        /* Emoji Section */
+        .emoji-display {
+            height: 200px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emoji-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .emoji-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .emoji-btn:hover {
+            background: rgba(255, 77, 141, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .emoji-explosion {
+            background: linear-gradient(90deg, #ff9eb5, #ff4d8d);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .emoji-explosion:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+        }
+
+        /* Love Meter */
+        .meter-container {
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #4a1e6e, #8b3d9a, #ff4d8d);
+            border-radius: 15px;
+            transition: width 1s ease;
+        }
+
+        .meter-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #ffb6c1;
+            margin-bottom: 1.5rem;
+        }
+
+        #lovePercentage {
+            font-weight: bold;
+            color: #ff4d8d;
+            font-size: 1.2rem;
+        }
+
+        .boost-love {
+            background: linear-gradient(90deg, #4a1e6e, #8b3d9a);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .boost-love:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 61, 154, 0.4);
+        }
+
+        /* Footer */
+        .main-footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-heart {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffb6c1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: #ff4d8d;
+        }
+
+        .lightbox-img-container {
+            max-height: 80vh;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        #lightboxImg {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 1rem;
+        }
+
+        .lightbox-nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .lightbox-nav-btn:hover {
+            background: rgba(255, 77, 141, 0.7);
+        }
+
+        /* Floating emojis */
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 10;
+            animation: floatUp 4s ease-in forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Heart animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4d8d;
+            transform: rotate(45deg);
+            pointer-events: none;
+            z-index: 5;
+            animation: fall linear forwards;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff4d8d;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Petal animation */
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffb6c1;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            pointer-events: none;
+            z-index: 5;
+            animation: floatDown linear forwards;
+        }
+
+        @keyframes floatDown {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Particle animation */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .highlight {
+                font-size: 3rem;
+            }
+            
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .reaction-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .girlfriend-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const loadingScreen = document.getElementById('loadingScreen');
+            const selectionScreen = document.getElementById('selectionScreen');
+            const mainScreen = document.getElementById('mainScreen');
+            const backButton = document.getElementById('backButton');
+            const selectButtons = document.querySelectorAll('.select-btn');
+            const musicToggle = document.getElementById('musicToggle');
+            const heartsRainBtn = document.getElementById('heartsRainBtn');
+            const petalsRainBtn = document.getElementById('petalsRainBtn');
+            const playBtn = document.getElementById('playBtn');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const musicProgressBar = document.getElementById('musicProgressBar');
+            const musicProgressFill = document.getElementById('musicProgressFill');
+            const musicVisualizer = document.getElementById('musicVisualizer');
+            const messageInput = document.getElementById('messageInput');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            const quickButtons = document.querySelectorAll('.quick-btn');
+            const imageUpload = document.getElementById('imageUpload');
+            const galleryGrid = document.getElementById('galleryGrid');
+            const clearGallery = document.getElementById('clearGallery');
+            const reactionButtons = document.querySelectorAll('.reaction-btn');
+            const emojiButtons = document.querySelectorAll('.emoji-btn');
+            const emojiDisplay = document.getElementById('emojiDisplay');
+            const emojiExplosion = document.getElementById('emojiExplosion');
+            const clearReactions = document.getElementById('clearReactions');
+            const reactionCount = document.getElementById('reactionCount');
+            const boostLove = document.getElementById('boostLove');
+            const lovePercentage = document.getElementById('lovePercentage');
+            const meterFill = document.getElementById('meterFill');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            const loveSound = document.getElementById('loveSound');
+            const kissSound = document.getElementById('kissSound');
+            const hugSound = document.getElementById('hugSound');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            const currentDate = document.getElementById('currentDate');
+            
+            // State variables
+            let isMusicPlaying = false;
+            let currentLoveLevel = 100;
+            let reactionCounter = 0;
+            let uploadedImages = [];
+            let currentImageIndex = 0;
+            
+            // Initialize the app
+            function initApp() {
+                // Simulate loading
+                simulateLoading();
+                
+                // Set current date
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                currentDate.textContent = now.toLocaleDateString('en-US', options);
+                
+                // Setup event listeners
+                setupEventListeners();
+                
+                // Initialize background animations
+                createBackgroundParticles();
+                createFloatingHearts();
+                createFloatingPetals();
+                
+                // Load any saved data from localStorage
+                loadSavedData();
+            }
+            
+            // Simulate loading screen
+            function simulateLoading() {
+                const progressFill = document.querySelector('.loading-screen .progress-fill');
+                let width = 0;
+                
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        
+                        // Hide loading screen with delay
+                        setTimeout(() => {
+                            loadingScreen.classList.remove('active');
+                            loadingScreen.classList.add('hidden');
+                        }, 500);
+                        
+                        return;
+                    }
+                    
+                    width += 2;
+                    progressFill.style.width = `${width}%`;
+                }, 30);
+            }
+            
+            // Setup all event listeners
+            function setupEventListeners() {
+                // Girlfriend selection
+                selectButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const gf = this.getAttribute('data-gf');
+                        selectGirlfriend(gf);
+                    });
+                });
+                
+                // Back button
+                backButton.addEventListener('click', goBackToSelection);
+                
+                // Music controls
+                musicToggle.addEventListener('click', toggleMusic);
+                playBtn.addEventListener('click', togglePlayPause);
+                volumeSlider.addEventListener('input', updateVolume);
+                backgroundMusic.addEventListener('timeupdate', updateMusicProgress);
+                musicProgressBar.addEventListener('click', seekMusic);
+                
+                // Message controls
+                sendMessageBtn.addEventListener('click', updateMessage);
+                quickButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        messageInput.value = this.getAttribute('data-msg');
+                        updateMessage();
+                    });
+                });
+                
+                // Image gallery
+                imageUpload.addEventListener('change', handleImageUpload);
+                clearGallery.addEventListener('click', clearGalleryImages);
+                
+                // Reaction buttons
+                reactionButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const reaction = this.getAttribute('data-reaction');
+                        triggerReaction(reaction);
+                    });
+                });
+                
+                // Emoji buttons
+                emojiButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const emoji = this.getAttribute('data-emoji');
+                        createFloatingEmoji(emoji);
+                    });
+                });
+                
+                emojiExplosion.addEventListener('click', triggerEmojiExplosion);
+                clearReactions.addEventListener('click', clearReactionsCounter);
+                
+                // Love meter
+                boostLove.addEventListener('click', boostLoveMeter);
+                
+                // Special effects buttons
+                heartsRainBtn.addEventListener('click', triggerHeartsRain);
+                petalsRainBtn.addEventListener('click', triggerPetalsRain);
+                
+                // Lightbox
+                lightboxClose.addEventListener('click', () => {
+                    lightbox.classList.remove('active');
+                });
+                
+                lightboxPrev.addEventListener('click', showPrevImage);
+                lightboxNext.addEventListener('click', showNextImage);
+                
+                // Click on gallery images
+                galleryGrid.addEventListener('click', function(e) {
+                    const galleryItem = e.target.closest('.gallery-item');
+                    if (galleryItem) {
+                        const index = Array.from(galleryGrid.children).indexOf(galleryItem);
+                        openLightbox(index);
+                    }
+                });
+                
+                // Click on emoji display area to create random emoji
+                emojiDisplay.addEventListener('click', function(e) {
+                    if (e.target === emojiDisplay) {
+                        const emojis = ['❤️', '💖', '😘', '🌹', '✨'];
+                        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                        createFloatingEmoji(randomEmoji, e.clientX, e.clientY);
+                    }
+                });
+                
+                // Typewriter effect for initial message
+                typewriterEffect();
+            }
+            
+            // Select girlfriend and show main screen
+            function selectGirlfriend(gf) {
+                // Add selection animation
+                const selectedCard = document.querySelector(`.girlfriend-card[data-gf="${gf}"]`);
+                selectedCard.classList.add('active');
+                
+                // Show main screen with animation
+                setTimeout(() => {
+                    selectionScreen.style.display = 'none';
+                    mainScreen.classList.add('active');
+                    
+                    // Trigger entrance animation
+                    document.querySelectorAll('.glass-card').forEach(card => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    });
+                }, 800);
+            }
+            
+            // Go back to selection screen
+            function goBackToSelection() {
+                mainScreen.classList.remove('active');
+                
+                setTimeout(() => {
+                    selectionScreen.style.display = 'flex';
+                    
+                    // Reset music
+                    backgroundMusic.pause();
+                    isMusicPlaying = false;
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    musicVisualizer.style.animationPlayState = 'paused';
+                }, 500);
+            }
+            
+            // Music controls
+            function toggleMusic() {
+                if (isMusicPlaying) {
+                    backgroundMusic.pause();
+                    musicVisualizer.style.animationPlayState = 'paused';
+                    musicToggle.innerHTML = '<i class="fas fa-music"></i><span class="btn-label">Music Off</span>';
+                } else {
+                    // Start music with user interaction
+                    backgroundMusic.play().catch(e => {
+                        console.log("Audio play failed:", e);
+                    });
+                    musicVisualizer.style.animationPlayState = 'running';
+                    musicToggle.innerHTML = '<i class="fas fa-volume-up"></i><span class="btn-label">Music On</span>';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            }
+            
+            function togglePlayPause() {
+                if (isMusicPlaying) {
+                    backgroundMusic.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    musicVisualizer.style.animationPlayState = 'paused';
+                } else {
+                    backgroundMusic.play();
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicVisualizer.style.animationPlayState = 'running';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            }
+            
+            function updateVolume() {
+                backgroundMusic.volume = volumeSlider.value / 100;
+            }
+            
+            function updateMusicProgress() {
+                if (backgroundMusic.duration) {
+                    const progressPercent = (backgroundMusic.currentTime / backgroundMusic.duration) * 100;
+                    musicProgressFill.style.width = `${progressPercent}%`;
+                    
+                    // Update time display
+                    document.getElementById('currentTime').textContent = formatTime(backgroundMusic.currentTime);
+                    document.getElementById('totalTime').textContent = formatTime(backgroundMusic.duration);
+                }
+            }
+            
+            function seekMusic(e) {
+                const progressBarWidth = musicProgressBar.clientWidth;
+                const clickPosition = e.offsetX;
+                const duration = backgroundMusic.duration;
+                
+                if (duration) {
+                    backgroundMusic.currentTime = (clickPosition / progressBarWidth) * duration;
+                }
+            }
+            
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            
+            // Message functions
+            function updateMessage() {
+                const message = messageInput.value.trim();
+                if (message) {
+                    const messageDisplay = document.getElementById('typingMessage');
+                    messageDisplay.textContent = message;
+                    
+                    // Add visual feedback
+                    sendMessageBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    sendMessageBtn.style.background = 'linear-gradient(90deg, #4cd964, #5ac8fa)';
+                    
+                    setTimeout(() => {
+                        sendMessageBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Update Message';
+                        sendMessageBtn.style.background = 'linear-gradient(90deg, #4a1e6e, #8b3d9a)';
+                    }, 2000);
+                    
+                    // Save to localStorage
+                    localStorage.setItem('romanticMessage', message);
+                }
+            }
+            
+            function typewriterEffect() {
+                const messageElement = document.getElementById('typingMessage');
+                const message = messageElement.textContent;
+                messageElement.textContent = '';
+                
+                let i = 0;
+                const typewriter = setInterval(() => {
+                    if (i < message.length) {
+                        messageElement.textContent += message.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typewriter);
+                    }
+                }, 50);
+            }
+            
+            // Image gallery functions
+            function handleImageUpload(e) {
+                const files = e.target.files;
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(event) {
+                            const imageData = event.target.result;
+                            
+                            // Add to uploaded images array
+                            uploadedImages.push(imageData);
+                            
+                            // Create gallery item
+                            createGalleryItem(imageData);
+                            
+                            // Save to localStorage
+                            saveImagesToStorage();
+                            
+                            // Hide empty gallery message
+                            document.getElementById('galleryEmpty').style.display = 'none';
+                        };
+                        
+                        reader.readAsDataURL(file);
+                    }
+                }
+                
+                // Reset file input
+                e.target.value = '';
+            }
+            
+            function createGalleryItem(imageData, isDefault = false) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                
+                const galleryImg = document.createElement('div');
+                galleryImg.className = 'gallery-img';
+                galleryImg.style.backgroundImage = `url(${imageData})`;
+                galleryImg.style.backgroundSize = 'cover';
+                galleryImg.style.backgroundPosition = 'center';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'img-overlay';
+                overlay.innerHTML = `
+                    <i class="fas fa-heart"></i>
+                    <p>${isDefault ? 'Memory' : 'Uploaded Memory'}</p>
+                `;
+                
+                galleryImg.appendChild(overlay);
+                galleryItem.appendChild(galleryImg);
+                galleryGrid.appendChild(galleryItem);
+            }
+            
+            function clearGalleryImages() {
+                // Clear all but default images
+                while (galleryGrid.children.length > 4) {
+                    galleryGrid.removeChild(galleryGrid.lastChild);
+                }
+                
+                // Clear uploaded images array
+                uploadedImages = [];
+                
+                // Clear localStorage
+                localStorage.removeItem('galleryImages');
+                
+                // Show empty message if no images
+                if (galleryGrid.children.length === 0) {
+                    document.getElementById('galleryEmpty').style.display = 'flex';
+                }
+            }
+            
+            function openLightbox(index) {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                if (index < 0 || index >= galleryItems.length) return;
+                
+                currentImageIndex = index;
+                const galleryImg = galleryItems[index].querySelector('.gallery-img');
+                const bgImage = galleryImg.style.backgroundImage;
+                
+                // Extract URL from background-image style
+                const imageUrl = bgImage.slice(5, -2);
+                lightboxImg.src = imageUrl;
+                lightbox.classList.add('active');
+            }
+            
+            function showPrevImage() {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+                
+                const galleryImg = document.querySelectorAll('.gallery-item')[currentImageIndex].querySelector('.gallery-img');
+                const bgImage = galleryImg.style.backgroundImage;
+                const imageUrl = bgImage.slice(5, -2);
+                lightboxImg.src = imageUrl;
+            }
+            
+            function showNextImage() {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+                
+                const galleryImg = document.querySelectorAll('.gallery-item')[currentImageIndex].querySelector('.gallery-img');
+                const bgImage = galleryImg.style.backgroundImage;
+                const imageUrl = bgImage.slice(5, -2);
+                lightboxImg.src = imageUrl;
+            }
+            
+            // Reaction functions
+            function triggerReaction(reaction) {
+                // Update counter
+                reactionCounter++;
+                reactionCount.textContent = reactionCounter;
+                
+                // Play sound based on reaction
+                switch(reaction) {
+                    case 'love':
+                        loveSound.currentTime = 0;
+                        loveSound.play();
+                        createHeartsExplosion();
+                        break;
+                    case 'kiss':
+                        kissSound.currentTime = 0;
+                        kissSound.play();
+                        createKissEmojis();
+                        break;
+                    case 'hug':
+                        hugSound.currentTime = 0;
+                        hugSound.play();
+                        createHugEffect();
+                        break;
+                    case 'flower':
+                        createFlowerPetals();
+                        break;
+                }
+                
+                // Add screen glow effect
+                addScreenGlow(reaction);
+                
+                // Save to localStorage
+                localStorage.setItem('reactionCount', reactionCounter);
+            }
+            
+            function createHeartsExplosion() {
+                for (let i = 0; i < 20; i++) {
+                    createFloatingEmoji('❤️');
+                }
+            }
+            
+            function createKissEmojis() {
+                for (let i = 0; i < 15; i++) {
+                    createFloatingEmoji('😘');
+                }
+            }
+            
+            function createHugEffect() {
+                // Create pulsing circles
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        createPulseCircle();
+                    }, i * 100);
+                }
+            }
+            
+            function createFlowerPetals() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createFloatingEmoji('🌹');
+                    }, i * 50);
+                }
+            }
+            
+            function createPulseCircle() {
+                const circle = document.createElement('div');
+                circle.style.position = 'fixed';
+                circle.style.left = '50%';
+                circle.style.top = '50%';
+                circle.style.transform = 'translate(-50%, -50%)';
+                circle.style.width = '10px';
+                circle.style.height = '10px';
+                circle.style.borderRadius = '50%';
+                circle.style.border = '2px solid #ff4d8d';
+                circle.style.pointerEvents = 'none';
+                circle.style.zIndex = '10';
+                
+                document.body.appendChild(circle);
+                
+                // Animate the circle
+                let size = 10;
+                const interval = setInterval(() => {
+                    size += 5;
+                    circle.style.width = `${size}px`;
+                    circle.style.height = `${size}px`;
+                    circle.style.opacity = `${1 - size / 200}`;
+                    
+                    if (size > 200) {
+                        clearInterval(interval);
+                        document.body.removeChild(circle);
+                    }
+                }, 20);
+            }
+            
+            function addScreenGlow(reaction) {
+                let color;
+                switch(reaction) {
+                    case 'love': color = '#ff4d8d'; break;
+                    case 'kiss': color = '#ffb6c1'; break;
+                    case 'hug': color = '#b0e0e6'; break;
+                    case 'flower': color = '#d8bfd8'; break;
+                    default: color = '#ff4d8d';
+                }
+                
+                const glow = document.createElement('div');
+                glow.style.position = 'fixed';
+                glow.style.top = '0';
+                glow.style.left = '0';
+                glow.style.width = '100%';
+                glow.style.height = '100%';
+                glow.style.backgroundColor = color;
+                glow.style.opacity = '0.3';
+                glow.style.zIndex = '5';
+                glow.style.pointerEvents = 'none';
+                glow.style.mixBlendMode = 'screen';
+                
+                document.body.appendChild(glow);
+                
+                // Animate fade out
+                let opacity = 0.3;
+                const interval = setInterval(() => {
+                    opacity -= 0.02;
+                    glow.style.opacity = opacity;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(interval);
+                        document.body.removeChild(glow);
+                    }
+                }, 50);
+            }
+            
+            // Emoji functions
+            function createFloatingEmoji(emoji, x = null, y = null) {
+                const emojiElement = document.createElement('div');
+                emojiElement.className = 'floating-emoji';
+                emojiElement.textContent = emoji;
+                
+                // Random position if not specified
+                const posX = x || Math.random() * window.innerWidth;
+                const posY = y || Math.random() * window.innerHeight;
+                
+                emojiElement.style.left = `${posX}px`;
+                emojiElement.style.top = `${posY}px`;
+                
+                // Random size
+                const size = 20 + Math.random() * 30;
+                emojiElement.style.fontSize = `${size}px`;
+                
+                // Random animation duration
+                const duration = 2 + Math.random() * 3;
+                emojiElement.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(emojiElement);
+                
+                // Remove element after animation completes
+                setTimeout(() => {
+                    if (emojiElement.parentNode) {
+                        emojiElement.parentNode.removeChild(emojiElement);
+                    }
+                }, duration * 1000);
+            }
+            
+            function triggerEmojiExplosion() {
+                const emojis = ['❤️', '💖', '😘', '🌹', '✨'];
+                
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                        createFloatingEmoji(randomEmoji);
+                    }, i * 30);
+                }
+                
+                // Add screen shake effect
+                document.body.style.transform = 'translateX(5px)';
+                setTimeout(() => {
+                    document.body.style.transform = 'translateX(-5px)';
+                    setTimeout(() => {
+                        document.body.style.transform = 'translateX(0)';
+                    }, 50);
+                }, 50);
+            }
+            
+            function clearReactionsCounter() {
+                reactionCounter = 0;
+                reactionCount.textContent = '0';
+                localStorage.setItem('reactionCount', '0');
+            }
+            
+            // Love meter functions
+            function boostLoveMeter() {
+                if (currentLoveLevel < 100) {
+                    currentLoveLevel += 10;
+                    if (currentLoveLevel > 100) currentLoveLevel = 100;
+                    
+                    updateLoveMeter();
+                    
+                    // Add visual effect
+                    for (let i = 0; i < 10; i++) {
+                        setTimeout(() => {
+                            createFloatingEmoji('❤️');
+                        }, i * 100);
+                    }
+                    
+                    // Update button text temporarily
+                    boostLove.innerHTML = '<i class="fas fa-heart-circle-plus"></i> Love Boosted!';
+                    boostLove.style.background = 'linear-gradient(90deg, #ff4d8d, #ff9eb5)';
+                    
+                    setTimeout(() => {
+                        boostLove.innerHTML = '<i class="fas fa-heart-circle-plus"></i> Boost Our Love';
+                        boostLove.style.background = 'linear-gradient(90deg, #4a1e6e, #8b3d9a)';
+                    }, 2000);
+                }
+            }
+            
+            function updateLoveMeter() {
+                lovePercentage.textContent = `${currentLoveLevel}%`;
+                meterFill.style.width = `${currentLoveLevel}%`;
+                
+                // Save to localStorage
+                localStorage.setItem('loveLevel', currentLoveLevel);
+            }
+            
+            // Special effects
+            function triggerHeartsRain() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        createHeart();
+                    }, i * 50);
+                }
+            }
+            
+            function triggerPetalsRain() {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        createPetal();
+                    }, i * 100);
+                }
+            }
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                
+                // Random position at top
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = '-20px';
+                
+                // Random size
+                const size = 10 + Math.random() * 20;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                
+                // Random color
+                const colors = ['#ff4d8d', '#ff9eb5', '#ffb6c1', '#ff6b9d'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.background = color;
+                heart.style.before = color;
+                heart.style.after = color;
+                
+                // Random animation duration
+                const duration = 3 + Math.random() * 5;
+                heart.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(heart);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, duration * 1000);
+            }
+            
+            function createPetal() {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                // Random position at top
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.top = '-20px';
+                
+                // Random size
+                const size = 10 + Math.random() * 15;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                
+                // Random color
+                const colors = ['#ffb6c1', '#ff9eb5', '#ffccd5', '#ffb8c6'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                petal.style.background = color;
+                
+                // Random animation duration
+                const duration = 5 + Math.random() * 7;
+                petal.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(petal);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (petal.parentNode) {
+                        petal.parentNode.removeChild(petal);
+                    }
+                }, duration * 1000);
+            }
+            
+            // Background animations
+            function createBackgroundParticles() {
+                const container = document.getElementById('particlesContainer');
+                
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}vw`;
+                    particle.style.top = `${Math.random() * 100}vh`;
+                    
+                    // Random size
+                    const size = 1 + Math.random() * 3;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random opacity
+                    particle.style.opacity = 0.3 + Math.random() * 0.7;
+                    
+                    // Random animation delay
+                    particle.style.animationDelay = `${Math.random() * 20}s`;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            function createFloatingHearts() {
+                const container = document.getElementById('backgroundHearts');
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = '❤️';
+                        heart.style.position = 'absolute';
+                        heart.style.fontSize = `${20 + Math.random() * 30}px`;
+                        heart.style.color = `rgba(255, 77, 141, ${0.2 + Math.random() * 0.3})`;
+                        heart.style.left = `${Math.random() * 100}vw`;
+                        heart.style.top = `${Math.random() * 100}vh`;
+                        heart.style.pointerEvents = 'none';
+                        heart.style.zIndex = '1';
+                        heart.style.animation = `floatHeart ${15 + Math.random() * 20}s infinite linear`;
+                        
+                        container.appendChild(heart);
+                    }, i * 300);
+                }
+                
+                // Add CSS for floating animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes floatHeart {
+                        0% {
+                            transform: translateY(0) rotate(0deg);
+                        }
+                        25% {
+                            transform: translateY(-20px) rotate(90deg);
+                        }
+                        50% {
+                            transform: translateY(-40px) rotate(180deg);
+                        }
+                        75% {
+                            transform: translateY(-20px) rotate(270deg);
+                        }
+                        100% {
+                            transform: translateY(0) rotate(360deg);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            function createFloatingPetals() {
+                const container = document.getElementById('backgroundPetals');
+                
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const petal = document.createElement('div');
+                        petal.innerHTML = '❀';
+                        petal.style.position = 'absolute';
+                        petal.style.fontSize = `${15 + Math.random() * 25}px`;
+                        petal.style.color = `rgba(255, 182, 193, ${0.2 + Math.random() * 0.3})`;
+                        petal.style.left = `${Math.random() * 100}vw`;
+                        petal.style.top = `${Math.random() * 100}vh`;
+                        petal.style.pointerEvents = 'none';
+                        petal.style.zIndex = '1';
+                        petal.style.animation = `floatPetal ${20 + Math.random() * 25}s infinite linear`;
+                        
+                        container.appendChild(petal);
+                    }, i * 500);
+                }
+                
+                // Add CSS for floating animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes floatPetal {
+                        0% {
+                            transform: translateX(0) translateY(0) rotate(0deg);
+                        }
+                        33% {
+                            transform: translateX(20px) translateY(-30px) rotate(120deg);
+                        }
+                        66% {
+                            transform: translateX(-10px) translateY(-50px) rotate(240deg);
+                        }
+                        100% {
+                            transform: translateX(0) translateY(0) rotate(360deg);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // LocalStorage functions
+            function loadSavedData() {
+                // Load message
+                const savedMessage = localStorage.getItem('romanticMessage');
+                if (savedMessage) {
+                    messageInput.value = savedMessage;
+                    document.getElementById('typingMessage').textContent = savedMessage;
+                }
+                
+                // Load reaction count
+                const savedReactions = localStorage.getItem('reactionCount');
+                if (savedReactions) {
+                    reactionCounter = parseInt(savedReactions);
+                    reactionCount.textContent = reactionCounter;
+                }
+                
+                // Load love level
+                const savedLoveLevel = localStorage.getItem('loveLevel');
+                if (savedLoveLevel) {
+                    currentLoveLevel = parseInt(savedLoveLevel);
+                    updateLoveMeter();
+                }
+                
+                // Load gallery images
+                const savedImages = localStorage.getItem('galleryImages');
+                if (savedImages) {
+                    uploadedImages = JSON.parse(savedImages);
+                    
+                    // Add uploaded images to gallery
+                    uploadedImages.forEach(imageData => {
+                        createGalleryItem(imageData);
+                    });
+                    
+                    // Hide empty message if we have images
+                    if (uploadedImages.length > 0) {
+                        document.getElementById('galleryEmpty').style.display = 'none';
+                    }
+                }
+            }
+            
+            function saveImagesToStorage() {
+                localStorage.setItem('galleryImages', JSON.stringify(uploadedImages));
+            }
+            
+            // Initialize the application
+            initApp();
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>>
+<html lang="en">

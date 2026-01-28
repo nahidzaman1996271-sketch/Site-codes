@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Pakhi - A Love Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #1a0b1e 0%, #2d0e2d 50%, #1a0b1e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+        
+        .date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #ffd1dc;
+            text-shadow: 0 0 10px rgba(255, 209, 220, 0.7);
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #ff9ec0;
+            text-shadow: 0 0 15px rgba(255, 158, 192, 0.8);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 2s 0.5s forwards;
+        }
+        
+        .beloved-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #ffd166;
+            text-shadow: 0 0 15px rgba(255, 209, 102, 0.7);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .beloved-name::before, .beloved-name::after {
+            content: '❀';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #ff9ec0;
+        }
+        
+        .beloved-name::before {
+            left: -50px;
+        }
+        
+        .beloved-name::after {
+            right: -50px;
+        }
+        
+        .love-letter {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 2s 1.5s forwards;
+        }
+        
+        .letter-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #f8e0e6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .letter-content p {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1.5s forwards;
+        }
+        
+        .letter-content p:nth-child(1) { animation-delay: 2s; }
+        .letter-content p:nth-child(2) { animation-delay: 2.5s; }
+        .letter-content p:nth-child(3) { animation-delay: 3s; }
+        .letter-content p:nth-child(4) { animation-delay: 3.5s; }
+        .letter-content p:nth-child(5) { animation-delay: 4s; }
+        .letter-content p:nth-child(6) { animation-delay: 4.5s; }
+        
+        .highlight {
+            color: #ffd166;
+            font-weight: 500;
+        }
+        
+        .yellow-dress {
+            color: #ffeb3b;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 235, 59, 0.5);
+            animation: dressGlow 2s infinite alternate;
+        }
+        
+        .plea {
+            text-align: center;
+            font-size: 2rem;
+            font-family: 'Great Vibes', cursive;
+            color: #ff9ec0;
+            margin: 40px 0;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 209, 220, 0.3);
+            border-bottom: 1px solid rgba(255, 209, 220, 0.3);
+            opacity: 0;
+            animation: fadeIn 2s 5s forwards;
+        }
+        
+        .signature {
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #ffd1dc;
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeIn 2s 5.5s forwards;
+        }
+        
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.7);
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .rose {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d6d;
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: sparkle 3s infinite;
+        }
+        
+        .butterfly {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.7;
+            animation: butterflyFloat 10s infinite ease-in-out;
+        }
+        
+        .footer-note {
+            text-align: center;
+            padding: 30px 0;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #ffb6c1;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 182, 193, 0.2);
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 2s 6s forwards;
+        }
+        
+        /* Music Player Styles */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            animation: fadeIn 2s 7s forwards;
+        }
+        
+        .music-btn {
+            background: none;
+            border: none;
+            color: #ffd1dc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .music-btn:hover {
+            transform: scale(1.2);
+            color: #ff9ec0;
+        }
+        
+        .music-info {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.4rem;
+            color: #ffd1dc;
+            white-space: nowrap;
+        }
+        
+        /* Photo Frame */
+        .photo-frame {
+            width: 300px;
+            height: 200px;
+            margin: 30px auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 8px solid #ffd1dc;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 2s 4s forwards;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff9ec0, #ffd1dc, #ffeb3b);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #8a0a3a;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .photo-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Interactive Heart */
+        .interactive-heart {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: #ff4d6d;
+            cursor: pointer;
+            z-index: 10;
+            animation: pulse 2s infinite;
+            opacity: 0;
+            animation: fadeIn 2s 6.5s forwards, pulse 2s infinite 6.5s;
+        }
+        
+        .heart-counter {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff4d6d;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        /* Message Box */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            color: #8a0a3a;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            max-width: 500px;
+            width: 90%;
+            animation: popIn 0.5s;
+        }
+        
+        .message-box h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #ff4d6d;
+        }
+        
+        .message-box p {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .message-counter {
+            font-size: 1rem;
+            color: #ff4d6d;
+            margin-top: 15px;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+        }
+        
+        .close-btn {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 15px;
+        }
+        
+        .close-btn:hover {
+            background: #ff2e5d;
+            transform: scale(1.05);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        
+        /* Pakhi Special Section */
+        .pakhi-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 209, 220, 0.1);
+            opacity: 0;
+            animation: fadeIn 2s 3s forwards;
+        }
+        
+        .pakhi-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ffd166;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+        }
+        
+        .pakhi-poem {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #ffd1dc;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .pakhi-poem span {
+            display: block;
+            margin: 10px 0;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        @keyframes butterflyFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) translateX(10px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-25px) translateX(-5px) rotate(10deg);
+            }
+            75% {
+                transform: translateY(-15px) translateX(5px) rotate(5deg);
+            }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 209, 220, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 209, 220, 1), 0 0 30px rgba(255, 158, 192, 0.8);
+            }
+        }
+        
+        @keyframes dressGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(255, 235, 59, 1), 0 0 25px rgba(255, 235, 59, 0.8);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from { 
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+        
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        @keyframes nameGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 209, 102, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 209, 102, 1), 0 0 30px rgba(255, 209, 102, 0.8);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            .beloved-name {
+                font-size: 2.5rem;
+            }
+            
+            .beloved-name::before, .beloved-name::after {
+                font-size: 1.5rem;
+            }
+            
+            .beloved-name::before {
+                left: -30px;
+            }
+            
+            .beloved-name::after {
+                right: -30px;
+            }
+            
+            .date {
+                font-size: 1.8rem;
+            }
+            
+            .love-letter {
+                padding: 25px;
+            }
+            
+            .letter-content {
+                font-size: 1.1rem;
+            }
+            
+            .plea {
+                font-size: 1.6rem;
+            }
+            
+            .signature {
+                font-size: 2.2rem;
+            }
+            
+            .pakhi-title {
+                font-size: 2.2rem;
+            }
+            
+            .pakhi-poem {
+                font-size: 1.4rem;
+            }
+            
+            .photo-frame {
+                width: 250px;
+                height: 180px;
+            }
+            
+            .music-player {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+            
+            .interactive-heart {
+                bottom: 80px;
+                font-size: 2.5rem;
+            }
+            
+            .message-box {
+                max-width: 90%;
+                padding: 20px;
+            }
+            
+            .message-box h2 {
+                font-size: 2.2rem;
+            }
+            
+            .message-box p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .beloved-name {
+                font-size: 2rem;
+            }
+            
+            .beloved-name::before, .beloved-name::after {
+                font-size: 1.2rem;
+            }
+            
+            .beloved-name::before {
+                left: -20px;
+            }
+            
+            .beloved-name::after {
+                right: -20px;
+            }
+            
+            .date {
+                font-size: 1.6rem;
+            }
+            
+            .love-letter {
+                padding: 20px 15px;
+            }
+            
+            .plea {
+                font-size: 1.4rem;
+            }
+            
+            .signature {
+                font-size: 1.8rem;
+            }
+            
+            .pakhi-title {
+                font-size: 1.8rem;
+            }
+            
+            .pakhi-poem {
+                font-size: 1.2rem;
+            }
+            
+            .photo-frame {
+                width: 200px;
+                height: 150px;
+            }
+            
+            .photo-placeholder {
+                font-size: 1.4rem;
+            }
+            
+            .photo-icon {
+                font-size: 2.5rem;
+            }
+            
+            .interactive-heart {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Message Overlay -->
+    <div class="overlay" id="messageOverlay"></div>
+    
+    <!-- Message Box -->
+    <div class="message-box" id="messageBox">
+        <h2 id="messageTitle">For My Pakhi</h2>
+        <p id="messageText"></p>
+        <div class="message-counter" id="messageCounter"></div>
+        <button class="close-btn" onclick="closeMessage()">Close</button>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="date">December 31, 2025</div>
+            <h1>For My Eternal Love</h1>
+            <div class="beloved-name">Mahmuda Khanum Shundori Pakhi</div>
+        </header>
+        
+        <div class="love-letter">
+            <div class="hearts-container" id="heartsContainer"></div>
+            
+            <!-- Photo Frame -->
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <div class="photo-icon">🌹</div>
+                    <div>The moment I first saw you in that beautiful yellow dress</div>
+                </div>
+            </div>
+            
+            <!-- Special Pakhi Section -->
+            <div class="pakhi-section">
+                <div class="pakhi-title">My Beautiful Pakhi</div>
+                <div class="pakhi-poem">
+                    <span>My Pakhi, my beautiful bird,</span>
+                    <span>Your voice is the sweetest song I've ever heard.</span>
+                    <span>With every flutter of your gentle wings,</span>
+                    <span>My lonely heart with happiness sings.</span>
+                    <span>You are the poetry my soul writes,</span>
+                    <span>Filling my world with radiant lights.</span>
+                </div>
+            </div>
+            
+            <div class="letter-content">
+                <p>My Dearest Pakhi,</p>
+                
+                <p>As the final hours of 2025 gently fade away, I find myself overwhelmed with gratitude for having you in my life. This year, like all the others before it, has been transformed into something magical simply because I get to share it with you.</p>
+                
+                <p>I remember the first time I saw you in that <span class="yellow-dress">sunshine-yellow dress</span> — my heart started pumping uncontrollably, as if it had been waiting its entire existence just for that moment. And even today, my heart still beats the same wild rhythm whenever I see you. That feeling has never faded, only grown stronger with each passing day.</p>
+                
+                <p>I cannot stop loving you, and everything about you obsesses me more and more every day, every second. Each time I see you, I fall in love even stronger than before. Your eyes, your hair, your smile — everything about you gives me that magical, fairy-tale feeling, like I've been granted something precious and unreal that I never thought I could deserve.</p>
+                
+                <p>You are the dream I never want to wake from, the poem I never stop writing, the song that plays in my soul on endless repeat. With you, every moment feels like a scene from the most beautiful story ever told.</p>
+                
+                <p>Though the year ends here, my love for you is eternal — boundless, timeless, and endless. It stretches beyond calendars and clocks, beyond seasons and years.</p>
+            </div>
+            
+            <div class="plea">
+                "Whatever happens, please stay with me forever."
+            </div>
+            
+            <div class="signature">
+                Yours forever,<br>
+                Nahid Ibn Zaman
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            My love for you is infinite, beyond the measure of time.
+        </div>
+    </div>
+    
+    <!-- Interactive Heart -->
+    <div class="interactive-heart" onclick="showMessage()">
+        ❤️
+        <div class="heart-counter" id="heartCounter">0</div>
+    </div>
+    
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" onclick="toggleMusic()" id="playBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <div class="music-info" id="musicInfo">Play Our Song</div>
+    </div>
+    
+    <script>
+        // Your personalized messages for Pakhi
+        const pakhiMessages = [
+            "When I saw you first time in that yellow dress, I was like 'who is this Cinderella!' From that day I feel a magnetic reaction.",
+            "I still remember you laugh a lot. I love that more than anything.",
+            "You are very caring from the beginning like mother.",
+            "Always ask me that I have done my meal or not.",
+            "Your hair is the most beautiful hair in the world I have ever seen and its aroma can beat any perfume in the world.",
+            "Your fingers are like magical touch. I wanna care them all day long.",
+            "Your cheeks like bubble ahhhh I love those cheeks! I wanna grab them again.",
+            "Your eyes... I see them as my world.",
+            "Your voice is the most beautiful thing. I love to hear them all day long. Even you yelling at me also... they become very dangerous. You once made me cry.",
+            "Your beauty can't be described in words. It will take eternal time to describe. But in this final hour, I just wanna say I love you forever..."
+        ];
+        
+        // Create animated hearts
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartCount = 60;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Random position
+                const leftPos = Math.random() * 100;
+                const topPos = Math.random() * 100;
+                
+                // Random size
+                const size = 15 + Math.random() * 25;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 4;
+                
+                heart.style.left = `${leftPos}%`;
+                heart.style.top = `${topPos}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                // Random color
+                const colors = ['#ff9ec0', '#ffd1dc', '#ff4d6d', '#ffb6c1', '#ffd166'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.color = color;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Create floating roses
+        function createRoses() {
+            const container = document.getElementById('heartsContainer');
+            const roseCount = 20;
+            
+            for (let i = 0; i < roseCount; i++) {
+                const rose = document.createElement('div');
+                rose.classList.add('rose');
+                rose.innerHTML = '🌹';
+                
+                // Random position
+                const leftPos = Math.random() * 100;
+                const topPos = Math.random() * 100;
+                
+                // Random size
+                const size = 20 + Math.random() * 30;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 6;
+                const duration = 6 + Math.random() * 6;
+                
+                rose.style.left = `${leftPos}%`;
+                rose.style.top = `${topPos}%`;
+                rose.style.fontSize = `${size}px`;
+                rose.style.animationDelay = `${delay}s`;
+                rose.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(rose);
+            }
+        }
+        
+        // Create butterflies for Pakhi (bird)
+        function createButterflies() {
+            const container = document.getElementById('heartsContainer');
+            const butterflyCount = 8;
+            
+            for (let i = 0; i < butterflyCount; i++) {
+                const butterfly = document.createElement('div');
+                butterfly.classList.add('butterfly');
+                butterfly.innerHTML = '🦋';
+                
+                // Random position
+                const leftPos = Math.random() * 100;
+                const topPos = Math.random() * 100;
+                
+                // Random size
+                const size = 25 + Math.random() * 20;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 8;
+                const duration = 8 + Math.random() * 6;
+                
+                butterfly.style.left = `${leftPos}%`;
+                butterfly.style.top = `${topPos}%`;
+                butterfly.style.fontSize = `${size}px`;
+                butterfly.style.animationDelay = `${delay}s`;
+                butterfly.style.animationDuration = `${duration}s`;
+                
+                // Random color
+                const colors = ['#ff9ec0', '#ffd1dc', '#ffd166', '#ffffff'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                butterfly.style.color = color;
+                
+                container.appendChild(butterfly);
+            }
+        }
+        
+        // Create sparkles
+        function createSparkles() {
+            const container = document.getElementById('heartsContainer');
+            const sparkleCount = 40;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                
+                // Random position
+                const leftPos = Math.random() * 100;
+                const topPos = Math.random() * 100;
+                
+                // Random size
+                const size = 3 + Math.random() * 6;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 3;
+                const duration = 1 + Math.random() * 4;
+                
+                sparkle.style.left = `${leftPos}%`;
+                sparkle.style.top = `${topPos}%`;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                sparkle.style.animationDelay = `${delay}s`;
+                sparkle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(sparkle);
+            }
+        }
+        
+        // Add glowing effect to title and name
+        function addGlowingEffect() {
+            const title = document.querySelector('h1');
+            const name = document.querySelector('.beloved-name');
+            
+            setInterval(() => {
+                title.style.animation = 'none';
+                name.style.animation = 'none';
+                
+                setTimeout(() => {
+                    title.style.animation = 'fadeIn 2s 0.5s forwards, glow 3s infinite';
+                    name.style.animation = 'fadeIn 2s 1s forwards, nameGlow 3s infinite';
+                }, 10);
+            }, 3000);
+        }
+        
+        // Music Player Functionality
+        let isPlaying = false;
+        let heartClickCount = 0;
+        const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
+        
+        function toggleMusic() {
+            const playBtn = document.getElementById('playBtn');
+            const musicInfo = document.getElementById('musicInfo');
+            
+            if (!isPlaying) {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                musicInfo.textContent = "For My Pakhi ♫";
+                isPlaying = true;
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                musicInfo.textContent = "Play Our Song";
+                isPlaying = false;
+            }
+        }
+        
+        // Interactive Heart Message - YOUR CUSTOM MESSAGES
+        function showMessage() {
+            heartClickCount++;
+            
+            // Update counter
+            document.getElementById('heartCounter').textContent = heartClickCount;
+            
+            // Get message based on click count
+            let messageIndex = (heartClickCount - 1) % pakhiMessages.length;
+            
+            // For clicks beyond 10, show special message
+            if (heartClickCount > pakhiMessages.length) {
+                messageIndex = pakhiMessages.length - 1; // Last message
+            }
+            
+            const messageBox = document.getElementById('messageBox');
+            const overlay = document.getElementById('messageOverlay');
+            const messageText = document.getElementById('messageText');
+            const messageCounter = document.getElementById('messageCounter');
+            
+            // Create extra hearts animation
+            createHeartBurst();
+            
+            // Set message
+            messageText.textContent = pakhiMessages[messageIndex];
+            
+            // Set counter text
+            if (heartClickCount <= pakhiMessages.length) {
+                messageCounter.textContent = `Memory ${heartClickCount} of ${pakhiMessages.length}`;
+            } else {
+                messageCounter.textContent = `Memory ∞ - I love you infinitely`;
+            }
+            
+            // Special title for last message
+            if (heartClickCount >= pakhiMessages.length) {
+                document.getElementById('messageTitle').textContent = "My Eternal Love";
+            } else {
+                document.getElementById('messageTitle').textContent = "My Dearest Pakhi";
+            }
+            
+            messageBox.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+        
+        function closeMessage() {
+            document.getElementById('messageBox').style.display = 'none';
+            document.getElementById('messageOverlay').style.display = 'none';
+        }
+        
+        // Create heart burst animation
+        function createHeartBurst() {
+            const interactiveHeart = document.querySelector('.interactive-heart');
+            const heartRect = interactiveHeart.getBoundingClientRect();
+            const heartX = heartRect.left + heartRect.width / 2;
+            const heartY = heartRect.top + heartRect.height / 2;
+            
+            // Different colors for different click counts
+            let heartColor = '#ff4d6d';
+            if (heartClickCount >= 8) heartColor = '#ffd166'; // Golden for later clicks
+            if (heartClickCount >= 10) heartColor = '#ff9ec0'; // Pink for final clicks
+            
+            for (let i = 0; i < 20; i++) {
+                const burstHeart = document.createElement('div');
+                burstHeart.innerHTML = '❤';
+                burstHeart.style.position = 'fixed';
+                burstHeart.style.left = `${heartX}px`;
+                burstHeart.style.top = `${heartY}px`;
+                burstHeart.style.fontSize = '20px';
+                burstHeart.style.color = heartColor;
+                burstHeart.style.zIndex = '100';
+                burstHeart.style.pointerEvents = 'none';
+                
+                // Random direction and distance
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 50 + Math.random() * 100;
+                const duration = 1 + Math.random();
+                
+                burstHeart.style.transition = `all ${duration}s ease-out`;
+                document.body.appendChild(burstHeart);
+                
+                // Trigger animation
+                setTimeout(() => {
+                    burstHeart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                    burstHeart.style.opacity = '0';
+                }, 10);
+                
+                // Remove element after animation
+                setTimeout(() => {
+                    document.body.removeChild(burstHeart);
+                }, duration * 1000);
+            }
+        }
+        
+        // Create romantic text effect on click
+        document.addEventListener('click', function(e) {
+            // Only create effect if not clicking interactive elements
+            if (!e.target.closest('.interactive-heart') && 
+                !e.target.closest('.music-player') && 
+                !e.target.closest('.message-box') && 
+                !e.target.closest('.close-btn')) {
+                
+                // Special words for Pakhi
+                const texts = ['Pakhi', 'Love', 'Forever', '❤', '💖', 'My Love', 'Shundori', 'Mahmuda', 'My Bird', 'Yellow Dress', 'Cinderella'];
+                const text = texts[Math.floor(Math.random() * texts.length)];
+                
+                const floatingText = document.createElement('div');
+                floatingText.textContent = text;
+                floatingText.style.position = 'fixed';
+                floatingText.style.left = `${e.clientX}px`;
+                floatingText.style.top = `${e.clientY}px`;
+                floatingText.style.fontFamily = "'Great Vibes', cursive";
+                floatingText.style.fontSize = '28px';
+                
+                // Special colors for special words
+                if (text === 'Pakhi' || text === 'Shundori' || text === 'Mahmuda') {
+                    floatingText.style.color = '#ffd166'; // Gold for her name
+                } else if (text === 'Yellow Dress' || text === 'Cinderella') {
+                    floatingText.style.color = '#ffeb3b'; // Yellow for dress memory
+                } else {
+                    floatingText.style.color = '#ff9ec0'; // Pink for others
+                }
+                
+                floatingText.style.pointerEvents = 'none';
+                floatingText.style.zIndex = '100';
+                floatingText.style.textShadow = '0 0 10px rgba(255, 158, 192, 0.8)';
+                floatingText.style.opacity = '1';
+                floatingText.style.transition = 'all 2s ease-out';
+                
+                document.body.appendChild(floatingText);
+                
+                // Animate
+                setTimeout(() => {
+                    floatingText.style.transform = 'translateY(-100px)';
+                    floatingText.style.opacity = '0';
+                }, 10);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    document.body.removeChild(floatingText);
+                }, 2000);
+            }
+        });
+        
+        // Create floating name effect for Pakhi
+        function createFloatingNames() {
+            const names = ['Pakhi', 'Shundori', 'Mahmuda', 'My Love', 'My Bird', 'Cinderella'];
+            
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% chance
+                    const name = names[Math.floor(Math.random() * names.length)];
+                    const floatingName = document.createElement('div');
+                    floatingName.textContent = name;
+                    floatingName.style.position = 'fixed';
+                    floatingName.style.left = `${Math.random() * 90 + 5}%`;
+                    floatingName.style.top = '100%';
+                    floatingName.style.fontFamily = "'Great Vibes', cursive";
+                    floatingName.style.fontSize = `${20 + Math.random() * 30}px`;
+                    
+                    // Special colors
+                    if (name === 'Pakhi' || name === 'Shundori' || name === 'Mahmuda') {
+                        floatingName.style.color = '#ffd166';
+                    } else if (name === 'Cinderella') {
+                        floatingName.style.color = '#ffeb3b';
+                    } else {
+                        floatingName.style.color = '#ff9ec0';
+                    }
+                    
+                    floatingName.style.pointerEvents = 'none';
+                    floatingName.style.zIndex = '50';
+                    floatingName.style.textShadow = '0 0 10px rgba(255, 158, 192, 0.8)';
+                    floatingName.style.opacity = '0.8';
+                    
+                    document.body.appendChild(floatingName);
+                    
+                    // Animate
+                    const duration = 5 + Math.random() * 5;
+                    floatingName.style.transition = `all ${duration}s linear`;
+                    
+                    setTimeout(() => {
+                        floatingName.style.top = '-50px';
+                        floatingName.style.opacity = '0';
+                    }, 10);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (floatingName.parentNode) {
+                            document.body.removeChild(floatingName);
+                        }
+                    }, duration * 1000);
+                }
+            }, 3000);
+        }
+        
+        // Initialize all animations and effects
+        window.onload = function() {
+            createHearts();
+            createRoses();
+            createButterflies();
+            createSparkles();
+            addGlowingEffect();
+            createFloatingNames();
+            
+            // Auto-play music after a delay (with user interaction)
+            setTimeout(() => {
+                document.querySelector('.music-player').style.animation = 'fadeIn 2s forwards';
+            }, 7000);
+            
+            // Display interactive heart after delay
+            setTimeout(() => {
+                document.querySelector('.interactive-heart').style.display = 'block';
+            }, 6500);
+            
+            // Add click event to close message when clicking overlay
+            document.getElementById('messageOverlay').addEventListener('click', closeMessage);
+            
+            // Play music on first click (for browsers that require user interaction)
+            let firstClick = true;
+            document.addEventListener('click', function() {
+                if (firstClick) {
+                    firstClick = false;
+                    // Optional: Uncomment to auto-play music on first click
+                    // toggleMusic();
+                }
+            });
+        };
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">

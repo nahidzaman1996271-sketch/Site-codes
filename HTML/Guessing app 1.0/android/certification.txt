@@ -1,0 +1,24 @@
+---------------------------------------------------
+Here are the ownership and the certification details
+of the Guessing app 1.0
+---------------------------------------------------
+
+app_name - 						Guessing app
+app_alias - 					guessingapp
+app_author_name - 				My Company
+app_author_organizational - 	My Company
+app_author_organization - 		My Company
+app_author_locality - 			My Company
+app_author_state - 				Dhaka
+app_author_country - 			Bangladesh
+app_password - 					bWcZM4xLphgC
+app_versionName - 				versionName "1.0"
+app_versionCode - 				100
+
+---------------------------------------------------
+The certification was created by WebIntoApp.com at
+the Thursday 8th of January 2026 06:41:48 PM
+
+https://webintoapp.com
+---------------------------------------------------
+

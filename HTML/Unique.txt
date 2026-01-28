@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Omnipresence - God Mode Prototype</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', monospace;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c0c2e, #1a1a3e);
+            color: #e0e0ff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        /* GOD DASHBOARD */
+        .god-dashboard {
+            flex: 3;
+            background: rgba(20, 20, 60, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #4a4aff;
+            box-shadow: 0 0 40px rgba(74, 74, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4a4aff;
+        }
+        
+        .dashboard-header h1 {
+            color: #6b6bff;
+            font-size: 2.2em;
+            text-shadow: 0 0 15px rgba(107, 107, 255, 0.7);
+        }
+        
+        .dashboard-header h2 {
+            color: #aaaaff;
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        
+        /* WORLD MAP */
+        .world-map {
+            flex: 1;
+            background: rgba(10, 10, 40, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #3333aa;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .player-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .player-dot:hover {
+            transform: scale(1.5);
+            box-shadow: 0 0 15px currentColor;
+        }
+        
+        /* PLAYER CONTROL */
+        .player-control {
+            background: rgba(30, 30, 70, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #5555cc;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-control {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+        }
+        
+        .stat-value {
+            color: #aaaaff;
+            font-weight: bold;
+        }
+        
+        .stat-slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, #0a0a2a, #3333aa);
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .stat-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #6b6bff;
+            cursor: pointer;
+            border: 2px solid #aaaaff;
+        }
+        
+        /* DIVINE POWERS */
+        .divine-powers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .power-btn {
+            background: linear-gradient(135deg, #2a2a7a, #4a4aff);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .power-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 74, 255, 0.5);
+        }
+        
+        .power-btn.curse {
+            background: linear-gradient(135deg, #7a2a2a, #ff4a4a);
+        }
+        
+        .power-btn.vision {
+            background: linear-gradient(135deg, #2a7a5a, #4affaa);
+        }
+        
+        .power-btn.time {
+            background: linear-gradient(135deg, #7a5a2a, #ffaa4a);
+        }
+        
+        /* GAME WORLD */
+        .game-world {
+            flex: 2;
+            background: rgba(15, 15, 35, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #33aa33;
+            box-shadow: 0 0 30px rgba(51, 170, 51, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .world-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #33aa33;
+        }
+        
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .player-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a4aff, #aa4aff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .world-view {
+            flex: 1;
+            background: rgba(5, 5, 20, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #444;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+        
+        .event-log {
+            font-family: monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 5px;
+            border-radius: 3px;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .log-miracles { background: rgba(74, 255, 74, 0.1); border-left: 3px solid #4aff4a; }
+        .log-curses { background: rgba(255, 74, 74, 0.1); border-left: 3px solid #ff4a4a; }
+        .log-world { background: rgba(74, 74, 255, 0.1); border-left: 3px solid #4a4aff; }
+        .log-player { background: rgba(255, 255, 74, 0.1); border-left: 3px solid #ffff4a; }
+        
+        /* ACTION PANEL */
+        .action-panel {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2a5a7a, #4aaaff);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 170, 255, 0.4);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GOD MODE DASHBOARD -->
+        <div class="god-dashboard">
+            <div class="dashboard-header">
+                <h1>⚡ OMNIPRESENCE CONTROL PANEL</h1>
+                <h2>GOD MODE ACTIVE • Connected to 7,432 Souls</h2>
+            </div>
+            
+            <div class="world-map" id="worldMap">
+                <h3>🌍 WORLD SOUL MAP</h3>
+                <!-- Player dots will be generated here -->
+            </div>
+            
+            <div class="player-control">
+                <h3>🎮 SELECTED SOUL CONTROL</h3>
+                <div id="selectedPlayerInfo">Click a player on the map</div>
+                
+                <div class="stats-grid" id="statsControl" style="display: none;">
+                    <!-- Stats sliders will be generated here -->
+                </div>
+            </div>
+            
+            <div class="divine-powers">
+                <button class="power-btn" onclick="performMiracle()">✨ Grant Miracle</button>
+                <button class="power-btn curse" onclick="performCurse()">☠️ Cast Curse</button>
+                <button class="power-btn vision" onclick="sendVision()">🔮 Send Vision</button>
+                <button class="power-btn" onclick="createNPC()">👤 Create NPC</button>
+                <button class="power-btn" onclick="modifyPhysics()">⚖️ Modify Physics</button>
+                <button class="power-btn time" onclick="controlTime()">⏳ Control Time</button>
+                <button class="power-btn curse" onclick="rewriteMemory()">🧠 Rewrite Memory</button>
+                <button class="power-btn" onclick="overrideDeath()">💀 Override Death</button>
+            </div>
+        </div>
+        
+        <!-- GAME WORLD VIEW -->
+        <div class="game-world">
+            <div class="world-header">
+                <div class="player-info">
+                    <div class="player-avatar" id="currentAvatar">P1</div>
+                    <div>
+                        <h3 id="currentPlayerName">Player_001</h3>
+                        <p id="currentPlayerStatus">Status: Alive • Location: Forest of Whispers</p>
+                    </div>
+                </div>
+                <div id="divineAttention">
+                    <div style="color: #4aff4a;">✦ Divine Attention: HIGH</div>
+                    <div style="font-size: 0.9em;">Karma: 72 • Faith: 88</div>
+                </div>
+            </div>
+            
+            <div class="world-view">
+                <div class="event-log" id="eventLog">
+                    <div class="log-entry log-world">🌅 Dawn breaks over the Silent Mountains...</div>
+                    <div class="log-entry log-player">🏹 You hunt a mystical stag in the Emerald Woods</div>
+                    <div class="log-entry log-player">💬 You pray at the Ancient Shrine (+5 Faith)</div>
+                    <div class="log-entry log-miracles">✨ A miraculous healing spring appears nearby!</div>
+                    <div class="log-entry log-player">⚔️ You defend a village from shadow creatures</div>
+                </div>
+            </div>
+            
+            <div class="action-panel">
+                <button class="action-btn" onclick="playerAction('pray')">🙏 Pray to the Divine</button>
+                <button class="action-btn" onclick="playerAction('explore')">🧭 Explore Unknown</button>
+                <button class="action-btn" onclick="playerAction('challenge')">⚔️ Challenge Fate</button>
+                <button class="action-btn" onclick="playerAction('defy')">👺 Defy the Gods</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // GLOBAL STATE
+        const gameState = {
+            players: [],
+            selectedPlayer: null,
+            worldTime: 'dawn',
+            divineEnergy: 100,
+            eventLog: [],
+            playerStats: {
+                health: 85,
+                faith: 88,
+                karma: 72,
+                power: 45,
+                luck: 60,
+                sanity: 90,
+                destiny: 50
+            }
+        };
+
+        // INITIALIZE PLAYERS
+        function initializePlayers() {
+            const playerNames = ['Aria', 'Kael', 'Lyra', 'Thorne', 'Sariel', 'Vex', 'Orion', 'Mira'];
+            const worldMap = document.getElementById('worldMap');
+            
+            playerNames.forEach((name, index) => {
+                const player = {
+                    id: index,
+                    name: name,
+                    x: Math.random() * 85 + 5,
+                    y: Math.random() * 85 + 5,
+                    color: `hsl(${index * 45}, 70%, 60%)`,
+                    stats: {
+                        health: Math.floor(Math.random() * 50) + 50,
+                        faith: Math.floor(Math.random() * 100),
+                        karma: Math.floor(Math.random() * 100) - 50,
+                        power: Math.floor(Math.random() * 100),
+                        luck: Math.floor(Math.random() * 100),
+                        sanity: Math.floor(Math.random() * 50) + 50,
+                        destiny: Math.floor(Math.random() * 100)
+                    },
+                    status: ['Alive', 'Blessed', 'Cursed', 'Enlightened'][Math.floor(Math.random() * 4)],
+                    location: ['Forest', 'Desert', 'Mountains', 'City', 'Underworld'][Math.floor(Math.random() * 5)]
+                };
+                
+                gameState.players.push(player);
+                
+                // Create player dot on map
+                const dot = document.createElement('div');
+                dot.className = 'player-dot';
+                dot.style.left = `${player.x}%`;
+                dot.style.top = `${player.y}%`;
+                dot.style.backgroundColor = player.color;
+                dot.style.boxShadow = `0 0 10px ${player.color}`;
+                dot.title = `${player.name} • ${player.status}`;
+                dot.onclick = () => selectPlayer(player);
+                
+                worldMap.appendChild(dot);
+            });
+            
+            // Select first player by default
+            if (gameState.players.length > 0) {
+                selectPlayer(gameState.players[0]);
+            }
+        }
+
+        // SELECT PLAYER FUNCTION
+        function selectPlayer(player) {
+            gameState.selectedPlayer = player;
+            
+            // Update player info display
+            document.getElementById('selectedPlayerInfo').innerHTML = `
+                <div style="margin-top: 10px;">
+                    <strong style="color: ${player.color}">${player.name}</strong><br>
+                    Status: ${player.status}<br>
+                    Location: ${player.location}<br>
+                    Divine Connection: ${player.stats.faith > 70 ? '✦✦✦' : player.stats.faith > 40 ? '✦✦' : '✦'}
+                </div>
+            `;
+            
+            // Update game world view
+            document.getElementById('currentAvatar').textContent = player.name.charAt(0);
+            document.getElementById('currentPlayerName').textContent = player.name;
+            document.getElementById('currentPlayerStatus').textContent = 
+                `Status: ${player.status} • Location: ${player.location} of ${['Whispers', 'Echoes', 'Lost Souls', 'Divinity'][Math.floor(Math.random() * 4)]}`;
+            
+            // Generate stats controls
+            const statsControl = document.getElementById('statsControl');
+            statsControl.style.display = 'grid';
+            statsControl.innerHTML = '';
+            
+            Object.entries(player.stats).forEach(([stat, value]) => {
+                const controlDiv = document.createElement('div');
+                controlDiv.className = 'stat-control';
+                controlDiv.innerHTML = `
+                    <div class="stat-label">
+                        <span>${stat.toUpperCase()}</span>
+                        <span class="stat-value" id="statValue-${stat}">${value}</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="${value}" 
+                           class="stat-slider" id="slider-${stat}"
+                           oninput="updateStat('${stat}', this.value)"
+                           style="background: linear-gradient(to right, #0a0a2a, ${player.color})">
+                `;
+                statsControl.appendChild(controlDiv);
+            });
+            
+            // Add divine energy tracker
+            const energyDiv = document.createElement('div');
+            energyDiv.className = 'stat-control';
+            energyDiv.innerHTML = `
+                <div class="stat-label">
+                    <span>DIVINE ENERGY</span>
+                    <span class="stat-value" id="divineEnergy">${gameState.divineEnergy}</span>
+                </div>
+                <input type="range" min="0" max="100" value="${gameState.divineEnergy}" 
+                       class="stat-slider" id="slider-energy"
+                       oninput="updateDivineEnergy(this.value)"
+                       style="background: linear-gradient(to right, #0a0a2a, #ffaa00)">
+            `;
+            statsControl.appendChild(energyDiv);
+            
+            logEvent(`${player.name} has been selected by divine will.`, 'world');
+        }
+
+        // UPDATE PLAYER STAT
+        function updateStat(stat, value) {
+            if (!gameState.selectedPlayer) return;
+            
+            gameState.selectedPlayer.stats[stat] = parseInt(value);
+            document.getElementById(`statValue-${stat}`).textContent = value;
+            
+            // Visual feedback
+            const eventLog = document.getElementById('eventLog');
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry log-miracles';
+            logEntry.textContent = `⚡ ${gameState.selectedPlayer.name}'s ${stat} adjusted to ${value}`;
+            eventLog.prepend(logEntry);
+            
+            // Keep log manageable
+            if (eventLog.children.length > 10) {
+                eventLog.removeChild(eventLog.lastChild);
+            }
+        }
+
+        // UPDATE DIVINE ENERGY
+        function updateDivineEnergy(value) {
+            gameState.divineEnergy = parseInt(value);
+            document.getElementById('divineEnergy').textContent = value;
+            document.getElementById('divineAttention').innerHTML = `
+                <div style="color: ${value > 70 ? '#4aff4a' : value > 30 ? '#ffff4a' : '#ff4a4a'}">
+                    ✦ Divine Attention: ${value > 70 ? 'HIGH' : value > 30 ? 'MODERATE' : 'LOW'}
+                </div>
+                <div style="font-size: 0.9em;">Energy: ${value}% • Connected to ${gameState.players.length} souls</div>
+            `;
+        }
+
+        // DIVINE POWERS
+        function performMiracle() {
+            if (gameState.divineEnergy < 10) {
+                alert("Insufficient divine energy!");
+                return;
+            }
+            
+            gameState.divineEnergy -= 10;
+            updateDivineEnergy(gameState.divineEnergy);
+            
+            const miracles = [
+                "A healing light descends from the heavens!",
+                "The barren land suddenly blooms with flowers!",
+                "A mystical creature appears to guide the lost!",
+                "Ancient knowledge floods the seeker's mind!",
+                "A protective aura shields the faithful!"
+            ];
+            
+            const miracle = miracles[Math.floor(Math.random() * miracles.length)];
+            logEvent(`✨ MIRACLE: ${miracle}`, 'miracles');
+            
+            if (gameState.selectedPlayer) {
+                gameState.selectedPlayer.stats.health = Math.min(100, gameState.selectedPlayer.stats.health + 20);
+                gameState.selectedPlayer.stats.faith = Math.min(100, gameState.selectedPlayer.stats.faith + 15);
+                updateStat('health', gameState.selectedPlayer.stats.health);
+                updateStat('faith', gameState.selectedPlayer.stats.faith);
+            }
+        }
+
+        function performCurse() {
+            if (gameState.divineEnergy < 15) {
+                alert("Insufficient divine energy!");
+                return;
+            }
+            
+            gameState.divineEnergy -= 15;
+            updateDivineEnergy(gameState.divineEnergy);
+            
+            const curses = [
+                "A shadow plague infects the land!",
+                "Nightmares haunt the unworthy!",
+                "Weapons turn against their masters!",
+                "The earth rejects your footsteps!",
+                "Voices of doubt whisper in your mind!"
+            ];
+            
+            const curse = curses[Math.floor(Math.random() * curses.length)];
+            logEvent(`☠️ CURSE: ${curse}`, 'curses');
+            
+            if (gameState.selectedPlayer) {
+                gameState.selectedPlayer.status = 'Cursed';
+                gameState.selectedPlayer.stats.luck = Math.max(0, gameState.selectedPlayer.stats.luck - 25);
+                gameState.selectedPlayer.stats.sanity = Math.max(0, gameState.selectedPlayer.stats.sanity - 20);
+                updateStat('luck', gameState.selectedPlayer.stats.luck);
+                updateStat('sanity', gameState.selectedPlayer.stats.sanity);
+            }
+        }
+
+        function sendVision() {
+            const visions = [
+                "You see a future where you rule as a benevolent king/queen!",
+                "A prophetic dream reveals hidden treasure in the Crystal Caves!",
+                "You witness your own death in three different timelines!",
+                "Ancient spirits show you the location of a forgotten temple!",
+                "You foresee a great calamity that only you can prevent!"
+            ];
+            
+            const vision = visions[Math.floor(Math.random() * visions.length)];
+            logEvent(`🔮 VISION: ${vision}`, 'miracles');
+            
+            if (gameState.selectedPlayer) {
+                gameState.selectedPlayer.stats.destiny = Math.min(100, gameState.selectedPlayer.stats.destiny + 10);
+                updateStat('destiny', gameState.selectedPlayer.stats.destiny);
+            }
+        }
+
+        function createNPC() {
+            const npcTypes = ['Wise Elder', 'Mysterious Stranger', 'Rebel Leader', 'Fallen Angel', 'Ancient Spirit'];
+            const npc = npcTypes[Math.floor(Math.random() * npcTypes.length)];
+            logEvent(`👤 Created NPC: ${npc} joins the world`, 'world');
+        }
+
+        function modifyPhysics() {
+            const modifications = [
+                "Gravity reversed in the Floating Isles!",
+                "Time flows backward near the Chrono Wells!",
+                "Water now burns with eternal flame!",
+                "Shadows have become solid matter!",
+                "Sound creates visible ripples in reality!"
+            ];
+            
+            const mod = modifications[Math.floor(Math.random() * modifications.length)];
+            logEvent(`⚖️ PHYSICS MODIFIED: ${mod}`, 'world');
+        }
+
+        function controlTime() {
+            const timeEffects = ['Time accelerated!', 'Time frozen!', 'Time reversed locally!', 'Day became night instantly!'];
+            const effect = timeEffects[Math.floor(Math.random() * timeEffects.length)];
+            logEvent(`⏳ TIME CONTROL: ${effect}`, 'world');
+        }
+
+        function rewriteMemory() {
+            const memories = [
+                "You remember a childhood that never happened...",
+                "The face of your beloved shifts and changes...",
+                "That betrayal you witnessed? It was an illusion...",
+                "You recall speaking a language you never learned...",
+                "The memory of your death surfaces, though you live..."
+            ];
+            
+            const memory = memories[Math.floor(Math.random() * memories.length)];
+            logEvent(`🧠 MEMORY REWRITTEN: ${memory}`, 'curses');
+            
+            if (gameState.selectedPlayer) {
+                gameState.selectedPlayer.stats.sanity = Math.max(0, gameState.selectedPlayer.stats.sanity - 15);
+                updateStat('sanity', gameState.selectedPlayer.stats.sanity);
+            }
+        }
+
+        function overrideDeath() {
+            logEvent(`💀 DEATH OVERRIDDEN: A soul is pulled back from the afterlife!`, 'miracles');
+            
+            if (gameState.selectedPlayer) {
+                gameState.selectedPlayer.status = 'Reborn';
+                gameState.selectedPlayer.stats.health = 100;
+                gameState.selectedPlayer.stats.destiny += 30;
+                updateStat('health', 100);
+                updateStat('destiny', gameState.selectedPlayer.stats.destiny);
+            }
+        }
+
+        // PLAYER ACTIONS
+        function playerAction(action) {
+            if (!gameState.selectedPlayer) return;
+            
+            const actions = {
+                pray: {
+                    text: "🙏 You pray with deep devotion...",
+                    effects: { faith: 10, karma: 5 },
+                    logClass: 'player'
+                },
+                explore: {
+                    text: "🧭 You venture into the unknown...",
+                    effects: { luck: 5, power: 5 },
+                    logClass: 'player'
+                },
+                challenge: {
+                    text: "⚔️ You challenge fate itself!",
+                    effects: { power: 15, health: -10, destiny: 10 },
+                    logClass: 'player'
+                },
+                defy: {
+                    text: "👺 You defiantly challenge divine will!",
+                    effects: { faith: -20, power: 20, karma: -15 },
+                    logClass: 'player'
+                }
+            };
+            
+            const act = actions[action];
+            logEvent(act.text, act.logClass);
+            
+            // Apply effects
+            Object.entries(act.effects).forEach(([stat, change]) => {
+                if (gameState.selectedPlayer.stats[stat] !== undefined) {
+                    gameState.selectedPlayer.stats[stat] = Math.max(0, Math.min(100, 
+                        gameState.selectedPlayer.stats[stat] + change));
+                    updateStat(stat, gameState.selectedPlayer.stats[stat]);
+                }
+            });
+            
+            // Random divine response (20% chance)
+            if (Math.random() < 0.2) {
+                setTimeout(() => {
+                    const responses = [
+                        "The heavens seem to acknowledge your action...",
+                        "A strange energy pulses through the world...",
+                        "Whispers echo from beyond reality...",
+                        "Reality shimmers around you momentarily..."
+                    ];
+                    logEvent(responses[Math.floor(Math.random() * responses.length)], 'world');
+                }, 1000);
+            }
+        }
+
+        // LOG EVENT FUNCTION
+        function logEvent(text, type = 'world') {
+            const eventLog = document.getElementById('eventLog');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.textContent = text;
+            
+            eventLog.prepend(logEntry);
+            
+            // Keep log manageable
+            if (eventLog.children.length > 8) {
+                eventLog.removeChild(eventLog.lastChild);
+            }
+            
+            // Add to game state
+            gameState.eventLog.unshift({ text, type, timestamp: new Date() });
+        }
+
+        // AUTO WORLD EVENTS
+        function generateWorldEvents() {
+            const events = [
+                { text: "🌙 The twin moons align, creating tidal waves of magic...", type: 'world' },
+                { text: "⚡ A thunderstorm of pure energy approaches from the east...", type: 'world' },
+                { text: "🌱 The Great Tree sheds leaves that grant visions...", type: 'world' },
+                { text: "👥 Pilgrims gather at the Temple of Lost Voices...", type: 'player' },
+                { text: "💀 A necropolis rises from the desert sands...", type: 'world' }
+            ];
+            
+            if (Math.random() < 0.3) {
+                const event = events[Math.floor(Math.random() * events.length)];
+                logEvent(event.text, event.type);
+            }
+            
+            // Random player actions
+            if (gameState.players.length > 0 && Math.random() < 0.4) {
+                const randomPlayer = gameState.players[Math.floor(Math.random() * gameState.players.length)];
+                const actions = [
+                    `${randomPlayer.name} discovers an ancient artifact!`,
+                    `${randomPlayer.name} leads a rebellion against the nobility!`,
+                    `${randomPlayer.name} founds a new religion!`,
+                    `${randomPlayer.name} disappears into the Void for 3 days...`,
+                    `${randomPlayer.name} communes with ancestral spirits!`
+                ];
+                logEvent(actions[Math.floor(Math.random() * actions.length)], 'player');
+            }
+        }
+
+        // INITIALIZE
+        window.onload = function() {
+            initializePlayers();
+            
+            // Start world events timer
+            setInterval(generateWorldEvents, 8000);
+            
+            // Auto-update divine energy (slow recharge)
+            setInterval(() => {
+                if (gameState.divineEnergy < 100) {
+                    updateDivineEnergy(Math.min(100, gameState.divineEnergy + 1));
+                }
+            }, 3000);
+            
+            logEvent("=== DIVINE INTERFACE ACTIVATED ===", 'world');
+            logEvent("You now hold absolute power over this reality.", 'world');
+            logEvent("Click player dots to select souls. Use sliders to adjust their fate.", 'world');
+        };
+    </script>
+</body>
+</html>
