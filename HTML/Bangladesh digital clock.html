@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangladesh Kawaii Clock 🇧🇩</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Nunito:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ffd6e7 0%, #d6f1ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 0 #ffd1e0;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #5d7fa3;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #4a6fa5;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .clock-container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 40px;
+            padding: 40px 30px;
+            box-shadow: 
+                0 20px 50px rgba(255, 107, 157, 0.15),
+                0 0 0 15px #ffecf2,
+                inset 0 0 30px rgba(255, 255, 255, 0.8);
+            position: relative;
+            margin-bottom: 40px;
+            border: 5px solid #fff;
+        }
+
+        .clock-face {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .time-unit {
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            border-radius: 25px;
+            padding: 25px 15px;
+            min-width: 160px;
+            box-shadow: 
+                0 10px 25px rgba(173, 216, 230, 0.3),
+                inset 0 -5px 10px rgba(255, 255, 255, 0.8),
+                inset 0 5px 10px rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+        }
+
+        .time-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #ffb8d9, #a6d8ff);
+        }
+
+        .time-value {
+            font-family: 'Comic Neue', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #5d7fa3;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8);
+            line-height: 1;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .seconds .time-value {
+            color: #ff6b9d;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .time-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            color: #ff8cb3;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .separator {
+            font-family: 'Comic Neue', cursive;
+            font-size: 4rem;
+            color: #ffb8d9;
+            margin-top: -20px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .date-display {
+            background: linear-gradient(90deg, #a6d8ff, #ffb8d9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(166, 216, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .date-display:hover::before {
+            left: 100%;
+        }
+
+        /* Decorations */
+        .decoration {
+            position: absolute;
+            font-size: 1.8rem;
+            z-index: 1;
+            pointer-events: none;
+            animation: floatAround 20s infinite linear;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 20px) rotate(90deg); }
+            50% { transform: translate(0, 40px) rotate(180deg); }
+            75% { transform: translate(-20px, 20px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .star {
+            color: #ffd166;
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.7);
+        }
+
+        .heart {
+            color: #ff6b9d;
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.7);
+        }
+
+        .cloud {
+            color: #a6d8ff;
+            text-shadow: 0 0 10px rgba(166, 216, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            color: #5d7fa3;
+            font-size: 1.1rem;
+        }
+
+        .update-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+
+        .blink-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #4cd964;
+            border-radius: 50%;
+            animation: blinkDot 1s infinite;
+        }
+
+        @keyframes blinkDot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .clock-face {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .time-unit {
+                min-width: 200px;
+                padding: 20px;
+            }
+            
+            .time-value {
+                font-size: 3.5rem;
+            }
+            
+            .separator {
+                display: none;
+            }
+            
+            .date-display {
+                font-size: 1.2rem;
+                padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .time-value {
+                font-size: 3rem;
+            }
+            
+            .time-unit {
+                min-width: 170px;
+            }
+            
+            .clock-container {
+                padding: 30px 20px;
+                border-radius: 30px;
+            }
+        }
+
+        /* Time period indicator */
+        .time-period {
+            margin-top: 20px;
+        }
+
+        .period-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #5d7fa3;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .sun, .moon {
+            font-size: 1.5rem;
+            animation: gentleSwing 3s infinite ease-in-out;
+        }
+
+        @keyframes gentleSwing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">
+                <i class="fas fa-clock"></i> Bangladesh Kawaii Clock
+            </h1>
+            <p class="subtitle">Current time in Dhaka, Bangladesh</p>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                Asia/Dhaka (GMT+6)
+            </div>
+        </div>
+        
+        <!-- Clock Container -->
+        <div class="clock-container" id="clockContainer">
+            <!-- Decorations will be added by JavaScript -->
+            
+            <!-- Clock Face -->
+            <div class="clock-face">
+                <div class="time-unit hours">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">HOURS</div>
+                </div>
+                
+                <div class="separator">:</div>
+                
+                <div class="time-unit minutes">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">MINUTES</div>
+                </div>
+                
+                <div class="separator">:</div>
+                
+                <div class="time-unit seconds">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">SECONDS</div>
+                </div>
+            </div>
+            
+            <!-- Date Display -->
+            <div class="date-display" id="dateDisplay">
+                Loading date...
+            </div>
+            
+            <!-- Time Period Indicator -->
+            <div class="time-period">
+                <div class="period-indicator" id="periodIndicator">
+                    <span class="sun">☀️</span>
+                    <span id="periodText">Good Day!</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>This cute clock updates in real-time every second! ⏰</p>
+            <div class="update-info">
+                <span class="blink-dot"></span>
+                <span>Live updating</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating decorations
+        function createDecorations() {
+            const container = document.getElementById('clockContainer');
+            const emojis = ['⭐', '🌟', '✨', '❤️', '💖', '💕', '☁️', '🌸', '🎀', '🐱', '🐶', '🐻', '🍰', '🧁'];
+            
+            for (let i = 0; i < 15; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'decoration';
+                
+                // Randomly assign emoji and class
+                const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                decoration.textContent = randomEmoji;
+                
+                // Assign class based on emoji type
+                if (randomEmoji.includes('⭐') || randomEmoji.includes('🌟') || randomEmoji.includes('✨')) {
+                    decoration.classList.add('star');
+                } else if (randomEmoji.includes('❤️') || randomEmoji.includes('💖') || randomEmoji.includes('💕')) {
+                    decoration.classList.add('heart');
+                } else if (randomEmoji.includes('☁️')) {
+                    decoration.classList.add('cloud');
+                }
+                
+                // Random position
+                decoration.style.left = Math.random() * 100 + '%';
+                decoration.style.top = Math.random() * 100 + '%';
+                
+                // Random size
+                const size = Math.random() * 1.5 + 1;
+                decoration.style.fontSize = size + 'rem';
+                
+                // Random animation duration
+                const duration = Math.random() * 30 + 20;
+                decoration.style.animationDuration = duration + 's';
+                decoration.style.animationDelay = Math.random() * 5 + 's';
+                
+                container.appendChild(decoration);
+            }
+        }
+
+        // Format number to always have 2 digits
+        function formatTime(num) {
+            return num < 10 ? '0' + num : num;
+        }
+
+        // Get Bangladesh time (GMT+6)
+        function getBangladeshTime() {
+            const now = new Date();
+            
+            // Get UTC time
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            
+            // Bangladesh is GMT+6
+            const offset = 6;
+            const bangladeshTime = new Date(utc + (3600000 * offset));
+            
+            return bangladeshTime;
+        }
+
+        // Update the clock display
+        function updateClock() {
+            const bangladeshTime = getBangladeshTime();
+            
+            // Get time components
+            const hours = bangladeshTime.getHours();
+            const minutes = bangladeshTime.getMinutes();
+            const seconds = bangladeshTime.getSeconds();
+            
+            // Display time
+            document.getElementById('hours').textContent = formatTime(hours);
+            document.getElementById('minutes').textContent = formatTime(minutes);
+            document.getElementById('seconds').textContent = formatTime(seconds);
+            
+            // Update date display
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateStr = bangladeshTime.toLocaleDateString('en-US', options);
+            document.getElementById('dateDisplay').textContent = dateStr;
+            
+            // Update time period indicator
+            const periodIndicator = document.getElementById('periodIndicator');
+            const periodText = document.getElementById('periodText');
+            
+            if (hours >= 5 && hours < 12) {
+                periodText.textContent = "Good Morning! 🌅";
+                periodIndicator.innerHTML = '<span class="sun">🌅</span><span id="periodText">Good Morning!</span>';
+            } else if (hours >= 12 && hours < 17) {
+                periodText.textContent = "Good Afternoon! ☀️";
+                periodIndicator.innerHTML = '<span class="sun">☀️</span><span id="periodText">Good Afternoon!</span>';
+            } else if (hours >= 17 && hours < 20) {
+                periodText.textContent = "Good Evening! 🌇";
+                periodIndicator.innerHTML = '<span class="sun">🌇</span><span id="periodText">Good Evening!</span>';
+            } else {
+                periodText.textContent = "Good Night! 🌙";
+                periodIndicator.innerHTML = '<span class="moon">🌙</span><span id="periodText">Good Night!</span>';
+            }
+            
+            // Add special animation to seconds unit
+            const secondsUnit = document.querySelector('.seconds');
+            secondsUnit.style.transform = `scale(${1 + (seconds % 2) * 0.05})`;
+            
+            // Add color shift based on seconds
+            const hue = (seconds * 6) % 360;
+            document.querySelector('.seconds .time-value').style.color = `hsl(${hue}, 70%, 60%)`;
+        }
+
+        // Add bouncy effect when time changes
+        function addBounceEffect(element) {
+            element.style.transform = 'scale(1.15)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createDecorations();
+            updateClock();
+            
+            // Update clock every second
+            setInterval(updateClock, 1000);
+            
+            // Add click effects to time units
+            const timeUnits = document.querySelectorAll('.time-unit');
+            timeUnits.forEach(unit => {
+                unit.addEventListener('click', function() {
+                    addBounceEffect(this);
+                });
+            });
+            
+            // Add a cute greeting based on time of day
+            setTimeout(() => {
+                const bangladeshTime = getBangladeshTime();
+                const hour = bangladeshTime.getHours();
+                
+                let greeting = "";
+                if (hour < 12) greeting = "Have a lovely morning! 🌸";
+                else if (hour < 17) greeting = "Hope you're having a wonderful day! ☀️";
+                else if (hour < 21) greeting = "Enjoy your evening! 🌇";
+                else greeting = "Sweet dreams! 🌙";
+                
+                // Create a temporary greeting message
+                const greetingEl = document.createElement('div');
+                greetingEl.textContent = greeting;
+                greetingEl.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(90deg, #ffb8d9, #a6d8ff);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 30px;
+                    font-weight: bold;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                    animation: slideIn 0.5s ease-out;
+                `;
+                
+                document.body.appendChild(greetingEl);
+                
+                // Remove after 5 seconds
+                setTimeout(() => {
+                    greetingEl.style.animation = 'slideOut 0.5s ease-out forwards';
+                    setTimeout(() => {
+                        if (greetingEl.parentNode) {
+                            greetingEl.parentNode.removeChild(greetingEl);
+                        }
+                    }, 500);
+                }, 5000);
+            }, 1000);
+            
+            // Add CSS for animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
