@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't you unblock me? 🥺</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Indie+Flower&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ffd6e7 0%, #d6f1ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.3);
+            position: relative;
+            z-index: 10;
+            border: 8px solid #fff;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-family: 'Comic Neue', cursive;
+            font-size: 3.5rem;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 0 #ffd1e0;
+            margin-bottom: 20px;
+            animation: gentlePulse 2s infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #5d7fa3;
+            margin-bottom: 10px;
+        }
+
+        /* Message Banner */
+        .message-banner {
+            background: linear-gradient(135deg, #ff6b9d, #ff8cb3);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 30px auto;
+            font-family: 'Indie Flower', cursive;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border: 3px solid white;
+            animation: bannerFloat 3s infinite;
+            max-width: 700px;
+        }
+
+        @keyframes bannerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Buttons container */
+        .buttons-container {
+            margin: 50px 0;
+            position: relative;
+            min-height: 200px;
+        }
+
+        /* Yes Button */
+        .yes-btn {
+            font-family: 'Comic Neue', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            padding: 25px 60px;
+            background: linear-gradient(135deg, #4cd964, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(76, 217, 100, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 20;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 40px rgba(76, 217, 100, 0.6);
+        }
+
+        .yes-btn:active {
+            transform: translateY(-5px);
+        }
+
+        /* No Button Container - Covers whole screen */
+        .no-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        /* No Button - SUPER FAST */
+        .no-btn {
+            font-family: 'Comic Neue', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff6b9d, #ff4757);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+            position: absolute;
+            transition: all 0.1s linear !important; /* SUPER FAST TRANSITION */
+            z-index: 30;
+            letter-spacing: 1px;
+            pointer-events: auto;
+        }
+
+        /* Trail effect for button */
+        .no-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 107, 157, 0.2);
+            border-radius: 50px;
+            transform: translate(-50%, -50%);
+            animation: trail 0.5s linear forwards;
+            z-index: -1;
+        }
+
+        @keyframes trail {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            to { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #a6d8ff, #ffb8d9);
+            padding: 30px;
+            border-radius: 30px;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(166, 216, 255, 0.4);
+            animation: popIn 0.5s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-title {
+            font-family: 'Comic Neue', cursive;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .success-subtitle {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            color: #ff6b9d;
+            opacity: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            color: #5d7fa3;
+            font-size: 1.1rem;
+        }
+
+        /* Counter */
+        .counter {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #ff6b9d;
+            font-weight: bold;
+        }
+
+        /* Speed indicator */
+        .speed-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff6b9d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 100;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .message-banner {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            .yes-btn, .no-btn {
+                font-size: 1.8rem;
+                padding: 20px 40px;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .message-banner {
+                font-size: 1.2rem;
+                padding: 12px;
+            }
+            
+            .yes-btn, .no-btn {
+                font-size: 1.5rem;
+                padding: 18px 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">Don't you unblock me? 🥺</h1>
+            <p class="subtitle">Please make the right choice... Nahid is waiting!</p>
+        </div>
+        
+        <!-- Message Banner -->
+        <div class="message-banner">
+            ❤️ Nahid loves you so much, please unblock him or he will cry 🥺 ❤️
+        </div>
+        
+        <!-- Buttons Container -->
+        <div class="buttons-container">
+            <!-- Yes Button -->
+            <button class="yes-btn" id="yesBtn">
+                <i class="fas fa-heart"></i> Yes, I'll unblock you!
+            </button>
+            
+            <!-- Click counter -->
+            <div class="counter">
+                Attempts to click "No": <span id="clickCount">0</span>
+            </div>
+        </div>
+        
+        <!-- Success Message (hidden by default) -->
+        <div class="success-message" id="successMessage">
+            <h2 class="success-title">Yay! Thank you! 🎉</h2>
+            <p class="success-subtitle">I love you too! You've made Nahid the happiest person! ❤️</p>
+            <p style="font-size: 1.5rem; color: white; margin-top: 20px;">
+                Now I can finally message you again! 😊
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Made with ❤️ by a hopeful Nahid</p>
+        </div>
+    </div>
+    
+    <!-- No Button Container (Covers entire screen) -->
+    <div class="no-container" id="noContainer">
+        <button class="no-btn" id="noBtn">
+            <i class="fas fa-times-circle"></i> No, never!
+        </button>
+    </div>
+    
+    <!-- Speed Indicator -->
+    <div class="speed-indicator" id="speedIndicator">
+        Speed: <span id="speedLevel">1x</span>
+    </div>
+
+    <script>
+        // Variables for the running button
+        let clickCount = 0;
+        let speedMultiplier = 1;
+        let isRunning = false;
+        let lastMoveTime = 0;
+        const moveDelay = 50; // Minimum time between moves (ms)
+        
+        // Get elements
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const successMessage = document.getElementById('successMessage');
+        const clickCountSpan = document.getElementById('clickCount');
+        const speedIndicator = document.getElementById('speedIndicator');
+        const speedLevelSpan = document.getElementById('speedLevel');
+        
+        // Create floating hearts
+        function createHearts(count, x, y) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = Math.random() * 2 + 1.5 + 'rem';
+                heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+                
+                document.body.appendChild(heart);
+                
+                // Animate heart
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 100 + Math.random() * 100;
+                const duration = 1000 + Math.random() * 1000;
+                
+                heart.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1) rotate(0deg)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0.5) rotate(360deg)`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                }).onfinish = () => heart.remove();
+            }
+        }
+        
+        // Move the No button EXTREMELY FAST
+        function moveNoButtonFast(event) {
+            const now = Date.now();
+            if (now - lastMoveTime < moveDelay / speedMultiplier) return;
+            lastMoveTime = now;
+            
+            // Get viewport dimensions
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            
+            // Get button dimensions
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Calculate safe area (button shouldn't go off screen)
+            const maxX = vw - btnWidth - 20;
+            const maxY = vh - btnHeight - 20;
+            
+            // Generate random position
+            let randomX, randomY;
+            
+            // If mouse event exists, move away from cursor
+            if (event) {
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+                
+                // Calculate direction away from cursor
+                const currentX = parseInt(noBtn.style.left) || vw/2;
+                const currentY = parseInt(noBtn.style.top) || vh/2;
+                
+                // Vector from cursor to button
+                const dx = currentX - mouseX;
+                const dy = currentY - mouseY;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+                
+                // Normalize and multiply by speed
+                const moveDistance = 150 * speedMultiplier;
+                const moveX = (dx/distance) * moveDistance;
+                const moveY = (dy/distance) * moveDistance;
+                
+                // Calculate new position
+                randomX = currentX + moveX;
+                randomY = currentY + moveY;
+                
+                // Keep within bounds
+                randomX = Math.max(20, Math.min(maxX, randomX));
+                randomY = Math.max(20, Math.min(maxY, randomY));
+            } else {
+                // Random position if no mouse event
+                randomX = Math.random() * maxX;
+                randomY = Math.random() * maxY;
+            }
+            
+            // Apply position with SUPER FAST transition
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Add visual effects
+            noBtn.style.transform = `scale(${0.9 + Math.random() * 0.3}) rotate(${Math.random() * 20 - 10}deg)`;
+            
+            // Create trail effect
+            createHearts(1, parseInt(noBtn.style.left) + btnWidth/2, parseInt(noBtn.style.top) + btnHeight/2);
+            
+            // Increase speed with each click attempt
+            if (event && event.type === 'click') {
+                speedMultiplier = Math.min(5, speedMultiplier + 0.3); // Cap at 5x speed
+                updateSpeedIndicator();
+                
+                // Show speed indicator temporarily
+                speedIndicator.style.display = 'block';
+                setTimeout(() => {
+                    speedIndicator.style.display = 'none';
+                }, 1000);
+            }
+        }
+        
+        // Update speed indicator
+        function updateSpeedIndicator() {
+            speedLevelSpan.textContent = speedMultiplier.toFixed(1) + 'x';
+            speedIndicator.style.background = speedMultiplier > 3 
+                ? 'linear-gradient(135deg, #ff4757, #ff0000)' 
+                : 'linear-gradient(135deg, #ff6b9d, #ff4757)';
+        }
+        
+        // Handle Yes button click
+        function handleYesClick() {
+            // Hide the buttons
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Create celebration hearts
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createHearts(3, 
+                        Math.random() * window.innerWidth, 
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 50);
+            }
+            
+            // Play happy sound
+            playHappySound();
+        }
+        
+        // Play a happy sound
+        function playHappySound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 523.25;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 1);
+            } catch (e) {
+                // Sound not supported
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial button position
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            noBtn.style.left = (vw/2 - noBtn.offsetWidth/2) + 'px';
+            noBtn.style.top = (vh/2 - noBtn.offsetHeight/2) + 'px';
+            
+            // Add event listeners
+            yesBtn.addEventListener('click', handleYesClick);
+            
+            // Make button run away on hover
+            noBtn.addEventListener('mouseover', function(e) {
+                if (!isRunning) {
+                    moveNoButtonFast(e);
+                }
+            });
+            
+            // Make button run away on click attempt
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update click counter
+                clickCount++;
+                clickCountSpan.textContent = clickCount;
+                
+                // Move button VERY FAST
+                moveNoButtonFast(e);
+                
+                // Create more hearts for dramatic effect
+                createHearts(5, e.clientX, e.clientY);
+                
+                // Show message
+                const tempMsg = document.createElement('div');
+                tempMsg.textContent = "You can't catch me! 😝";
+                tempMsg.style.cssText = `
+                    position: fixed;
+                    top: ${e.clientY - 50}px;
+                    left: ${e.clientX - 75}px;
+                    background: #ff6b9d;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    z-index: 1000;
+                    animation: popIn 0.3s;
+                `;
+                document.body.appendChild(tempMsg);
+                
+                setTimeout(() => {
+                    tempMsg.style.animation = 'popIn 0.3s reverse forwards';
+                    setTimeout(() => tempMsg.remove(), 300);
+                }, 1000);
+            });
+            
+            // Also move button randomly every second (but faster with higher speed)
+            setInterval(() => {
+                if (noBtn.style.display !== 'none') {
+                    moveNoButtonFast();
+                }
+            }, 1000 / speedMultiplier);
+            
+            // Create occasional hearts
+            setInterval(() => {
+                if (noBtn.style.display !== 'none') {
+                    createHearts(1, 
+                        Math.random() * window.innerWidth, 
+                        Math.random() * window.innerHeight
+                    );
+                }
+            }, 2000);
+        });
+        
+        // Add global mouse move to make button run from cursor
+        document.addEventListener('mousemove', function(e) {
+            if (noBtn.style.display === 'none') return;
+            
+            // Calculate distance from cursor to button
+            const btnRect = noBtn.getBoundingClientRect();
+            const btnCenterX = btnRect.left + btnRect.width/2;
+            const btnCenterY = btnRect.top + btnRect.height/2;
+            
+            const dx = btnCenterX - e.clientX;
+            const dy = btnCenterY - e.clientY;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            
+            // If cursor is getting close (within 150px), move button
+            if (distance < 150) {
+                moveNoButtonFast(e);
+            }
+        });
+    </script>
+</body>
+</html>
