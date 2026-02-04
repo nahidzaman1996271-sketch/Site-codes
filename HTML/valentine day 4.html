@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Shundori Jaan Pakhi 💖 | Valentine's Proposal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --blush-pink: #F8D7E8;
+            --rose-red: #E63946;
+            --champagne-gold: #D4AF37;
+            --soft-white: #FFF9F5;
+            --dark-rose: #B23A48;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--soft-white);
+            color: #444;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Background Elements */
+        .hearts-container, .petals-container, .sparkles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart, .petal, .sparkle {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .heart {
+            color: var(--rose-red);
+            font-size: 20px;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .petal {
+            color: var(--dark-rose);
+            font-size: 24px;
+            animation: fall 12s infinite linear;
+        }
+        
+        .sparkle {
+            color: var(--champagne-gold);
+            font-size: 16px;
+            animation: sparkle 3s infinite alternate;
+        }
+        
+        /* Page Container */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s;
+            z-index: 2;
+        }
+        
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Luxury Card Style */
+        .luxury-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+        
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--blush-pink), var(--rose-red), var(--champagne-gold));
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-rose);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .romantic-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            line-height: 1.4;
+            color: var(--dark-rose);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .bangla-text {
+            font-size: 1.8rem;
+            color: var(--rose-red);
+            margin-top: 20px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(135deg, var(--rose-red), var(--dark-rose));
+            color: white;
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.3);
+        }
+        
+        .btn-yes:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-no {
+            background: linear-gradient(135deg, #888, #555);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .btn-no:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--champagne-gold), #B8860B);
+            color: white;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-back {
+            background: transparent;
+            color: var(--dark-rose);
+            border: 2px solid var(--blush-pink);
+        }
+        
+        .btn-back:hover {
+            background: var(--blush-pink);
+        }
+        
+        /* Funny No Button Messages */
+        .funny-message {
+            position: absolute;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark-rose);
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        /* Gift Cards */
+        .gift-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .gift-card {
+            width: 220px;
+            height: 280px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .gift-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--champagne-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .gift-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--rose-red);
+        }
+        
+        .gift-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark-rose);
+            margin-bottom: 10px;
+        }
+        
+        /* Love Clock */
+        .love-clock {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .clock-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .counter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+        
+        .time-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--rose-red);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .time-label {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        .infinity-symbol {
+            font-size: 5rem;
+            color: var(--champagne-gold);
+            margin: 20px 0;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        /* Ring Animation */
+        .ring-box {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 40px auto;
+            perspective: 1000px;
+        }
+        
+        .ring-lid, .ring-base {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #FFE4E1, #FFB6C1);
+            border-radius: 20px 20px 0 0;
+            top: 0;
+            left: 0;
+            transform-origin: bottom;
+            transition: transform 1.5s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ring-base {
+            top: 50%;
+            border-radius: 0 0 20px 20px;
+            background: linear-gradient(135deg, #FFB6C1, #FFE4E1);
+        }
+        
+        .ring-lid.open {
+            transform: rotateX(-120deg);
+        }
+        
+        .ring {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+        
+        .ring-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid var(--champagne-gold);
+            position: relative;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        .diamond {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            animation: diamond-sparkle 2s infinite alternate;
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        
+        .music-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: var(--shadow);
+            color: var(--rose-red);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .romantic-text {
+                font-size: 1.8rem;
+            }
+            
+            .bangla-text {
+                font-size: 1.5rem;
+            }
+            
+            .luxury-card {
+                padding: 30px 20px;
+            }
+            
+            .gift-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gift-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .love-clock {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .counter {
+                gap: 10px;
+            }
+            
+            .time-unit {
+                min-width: 80px;
+            }
+            
+            .time-value {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 0.7; }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        @keyframes diamond-sparkle {
+            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(255, 255, 255, 1); }
+        }
+        
+        @keyframes textReveal {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Easter Egg */
+        .easter-egg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            border-left: 5px solid var(--champagne-gold);
+        }
+        
+        .easter-egg.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    <div class="petals-container" id="petalsContainer"></div>
+    <div class="sparkles-container" id="sparklesContainer"></div>
+    
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" id="musicToggle">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    
+    <!-- Easter Egg Message -->
+    <div class="easter-egg" id="easterEgg">
+        <span id="easterEggText">Warning: Excessive cuteness detected 😌</span>
+    </div>
+    
+    <!-- Page 1: Proposal -->
+    <div class="page active" id="page1">
+        <div class="luxury-card">
+            <h1>So... I was thinking 🤔</h1>
+            <div class="romantic-text">
+                Will you be my Valentine,<br>
+                My Shundori Jaan Pakhi? 💖
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-yes" id="yesBtn">
+                    <i class="fas fa-heart"></i> Yes 💕
+                </button>
+                <button class="btn btn-yes" id="hellYesBtn">
+                    <i class="fas fa-fire"></i> Hell Yesss 😍🔥
+                </button>
+                <button class="btn btn-no" id="noBtn">
+                    <i class="fas fa-times"></i> No 😏
+                </button>
+            </div>
+            
+            <!-- Funny messages that appear near the No button -->
+            <div class="funny-message" id="funnyMessage1">Nice try 😏</div>
+            <div class="funny-message" id="funnyMessage2">Wrong answer detected 🚨</div>
+            <div class="funny-message" id="funnyMessage3">You already know 😌</div>
+        </div>
+    </div>
+    
+    <!-- Page 2: Gift Selection -->
+    <div class="page" id="page2">
+        <div class="luxury-card">
+            <h2>Alright... now choose carefully,</h2>
+            <div class="romantic-text">
+                My Shundori Pakhi 💝
+            </div>
+            
+            <div class="gift-cards">
+                <div class="gift-card" id="gift1">
+                    <div class="gift-icon">💖</div>
+                    <h3 class="gift-title">Love</h3>
+                    <p>A timeless expression</p>
+                </div>
+                
+                <div class="gift-card" id="gift2">
+                    <div class="gift-icon">🌟</div>
+                    <h3 class="gift-title">Our Future</h3>
+                    <p>What's yet to come</p>
+                </div>
+                
+                <div class="gift-card" id="gift3">
+                    <div class="gift-icon">💍</div>
+                    <h3 class="gift-title">A Promise</h3>
+                    <p>Forever and beyond</p>
+                </div>
+            </div>
+            
+            <div class="love-clock">
+                <div class="clock-card">
+                    <h3>I have loved you since...</h3>
+                    <div class="romantic-text">14 May 2025 💖</div>
+                    
+                    <div id="loveCounter" class="counter">
+                        <div class="time-unit">
+                            <div class="time-value" id="days">000</div>
+                            <div class="time-label">Days</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-value" id="hours">00</div>
+                            <div class="time-label">Hours</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-value" id="minutes">00</div>
+                            <div class="time-label">Minutes</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-value" id="seconds">00</div>
+                            <div class="time-label">Seconds</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 20px; font-style: italic; color: #777;">
+                        "I've been loving you for <span id="counterText"></span>"
+                    </p>
+                </div>
+                
+                <div class="clock-card">
+                    <h3>And how long will I love you?</h3>
+                    <div class="infinity-symbol">∞</div>
+                    <div class="romantic-text">
+                        Forever.<br>
+                        And even after that... a little more ❤️
+                    </div>
+                    <p style="margin-top: 15px; color: #999; font-size: 0.9rem;">
+                        This counter never ends.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-back" id="backFromGifts">
+                    <i class="fas fa-arrow-left"></i> Back to Proposal
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 3: Gift 1 - Pure Romance -->
+    <div class="page" id="page3">
+        <div class="luxury-card">
+            <h2>Pure Love 💖</h2>
+            
+            <div class="romantic-text" id="gift1Text">
+                <p>My Shundori Jaan Pakhiii,</p>
+                <p>I love you for eternity.</p>
+                <p>Please don't ever leave me 💖</p>
+                <p>You are my heart, my peace, my everything.</p>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <div class="heart" style="font-size: 4rem; position: relative; animation: float 5s infinite ease-in-out;">🌹</div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-gold" id="backFromGift1">
+                    <i class="fas fa-gift"></i> Back to Surprises 💕
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 4: Gift 2 - Future Date -->
+    <div class="page" id="page4">
+        <div class="luxury-card">
+            <h2>Our Future Date 🌟</h2>
+            
+            <div class="romantic-text">
+                <p>Next time when we meet…</p>
+                <p>We'll go wherever you want 🌆✨</p>
+                <p>You'll eat whatever you want 🍕🍰</p>
+                <p>And I'll happily pay… and smile…</p>
+                <p>Because seeing my Shundori Pakhi happy</p>
+                <p>is already my favorite plan 💕</p>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap;">
+                <div style="font-size: 2.5rem;">🌆</div>
+                <div style="font-size: 2.5rem;">🍕</div>
+                <div style="font-size: 2.5rem;">🍰</div>
+                <div style="font-size: 2.5rem;">✨</div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-gold heartbeat" id="backFromGift2">
+                    <i class="fas fa-heartbeat"></i> Back to Surprises
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 5: Gift 3 - Bengali Promise -->
+    <div class="page" id="page5">
+        <div class="luxury-card">
+            <h2>A Promise 💍</h2>
+            
+            <div class="romantic-text bangla-text">
+                <p>"Kacher churi…</p>
+                <p>Next time kinboi,</p>
+                <p>Joto dam hok na kno 🥹💖</p>
+                <p>Tomar jonno shob kichu."</p>
+            </div>
+            
+            <!-- Ring Animation -->
+            <div class="ring-box" id="ringBox">
+                <div class="ring-lid" id="ringLid">
+                    <div class="ring" id="ring">
+                        <div class="ring-circle"></div>
+                        <div class="diamond"></div>
+                    </div>
+                </div>
+                <div class="ring-base"></div>
+            </div>
+            
+            <div class="romantic-text" style="margin-top: 30px;">
+                <p>Ei ring ta ekhon sudhu shopno…</p>
+                <p>But ekdin, eta real hobe 💍</p>
+                <p>Only for my Shundori Jaan Pakhi ❤️</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; color: #999; font-style: italic;">
+                Promise, not pressure 💖
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-gold" id="backFromGift3">
+                    <i class="fas fa-arrow-left"></i> Back to Surprises
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for background music -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const page3 = document.getElementById('page3');
+        const page4 = document.getElementById('page4');
+        const page5 = document.getElementById('page5');
+        
+        const yesBtn = document.getElementById('yesBtn');
+        const hellYesBtn = document.getElementById('hellYesBtn');
+        const noBtn = document.getElementById('noBtn');
+        
+        const gift1 = document.getElementById('gift1');
+        const gift2 = document.getElementById('gift2');
+        const gift3 = document.getElementById('gift3');
+        
+        const backFromGifts = document.getElementById('backFromGifts');
+        const backFromGift1 = document.getElementById('backFromGift1');
+        const backFromGift2 = document.getElementById('backFromGift2');
+        const backFromGift3 = document.getElementById('backFromGift3');
+        
+        const musicToggle = document.getElementById('musicToggle');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        
+        const loveCounter = document.getElementById('loveCounter');
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const counterText = document.getElementById('counterText');
+        
+        const ringBox = document.getElementById('ringBox');
+        const ringLid = document.getElementById('ringLid');
+        const ring = document.getElementById('ring');
+        
+        const easterEgg = document.getElementById('easterEgg');
+        const easterEggText = document.getElementById('easterEggText');
+        
+        // Background elements
+        const heartsContainer = document.getElementById('heartsContainer');
+        const petalsContainer = document.getElementById('petalsContainer');
+        const sparklesContainer = document.getElementById('sparklesContainer');
+        
+        // Create floating background elements
+        function createBackgroundElements() {
+            // Create hearts
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 8}s`;
+                heart.style.fontSize = `${15 + Math.random() * 15}px`;
+                heartsContainer.appendChild(heart);
+            }
+            
+            // Create petals
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.innerHTML = '🌸';
+                petal.style.left = `${Math.random() * 100}%`;
+                petal.style.animationDelay = `${Math.random() * 12}s`;
+                petalsContainer.appendChild(petal);
+            }
+            
+            // Create sparkles
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 3}s`;
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+        
+        // Page Navigation
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Special actions for specific pages
+            if (pageId === 'page5') {
+                // Open the ring box after a short delay
+                setTimeout(() => {
+                    ringLid.classList.add('open');
+                }, 800);
+            }
+            
+            // Create heart explosion when going to gift pages
+            if (pageId === 'page2') {
+                createHeartExplosion();
+            }
+        }
+        
+        // Create heart explosion animation
+        function createHeartExplosion() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = '25px';
+                    heart.style.zIndex = '100';
+                    heart.style.animation = 'float 2s ease-out forwards';
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000);
+                }, i * 50);
+            }
+        }
+        
+        // No Button Funny Behavior
+        let noButtonClickCount = 0;
+        const funnyMessages = [
+            "Nice try 😏",
+            "Wrong answer detected 🚨",
+            "You already know 😌",
+            "Not an option 💖",
+            "Try again 😄",
+            "Seriously? 😏",
+            "I don't think so 😌"
+        ];
+        const funnyMessageElements = [
+            document.getElementById('funnyMessage1'),
+            document.getElementById('funnyMessage2'),
+            document.getElementById('funnyMessage3')
+        ];
+        
+        function handleNoButtonInteraction(e) {
+            noButtonClickCount++;
+            
+            // Show random funny message
+            const randomMessage = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            const messageElement = funnyMessageElements[noButtonClickCount % 3];
+            
+            messageElement.textContent = randomMessage;
+            messageElement.style.left = `${e.clientX + 20}px`;
+            messageElement.style.top = `${e.clientY - 20}px`;
+            messageElement.style.opacity = '1';
+            
+            // Hide message after 1.5 seconds
+            setTimeout(() => {
+                messageElement.style.opacity = '0';
+            }, 1500);
+            
+            // Make button run away
+            const button = e.target;
+            const container = button.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within container
+            const maxX = containerRect.width - button.offsetWidth;
+            const maxY = containerRect.height - button.offsetHeight;
+            
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            // Random effects
+            const randomEffect = Math.random();
+            
+            if (randomEffect < 0.3) {
+                // Teleport
+                button.style.transform = `translate(${newX}px, ${newY}px)`;
+                button.style.transition = 'transform 0.1s';
+            } else if (randomEffect < 0.6) {
+                // Shrink and grow
+                button.style.transform = `scale(${0.5 + Math.random() * 0.5})`;
+                button.style.transition = 'transform 0.3s';
+            } else {
+                // Wiggle
+                button.style.transform = `translate(${newX}px, ${newY}px) rotate(${Math.random() * 20 - 10}deg)`;
+                button.style.transition = 'transform 0.2s';
+            }
+            
+            // Reset after a short time
+            setTimeout(() => {
+                button.style.transform = '';
+                button.style.transition = '';
+            }, 300);
+            
+            // Easter egg after many attempts
+            if (noButtonClickCount === 7) {
+                showEasterEgg("You're persistent! But my love is more persistent 💖");
+            }
+        }
+        
+        // Love Counter Calculation
+        const loveStartDate = new Date('May 14, 2025 00:00:00').getTime();
+        
+        function updateLoveCounter() {
+            const now = new Date().getTime();
+            const timeDifference = now - loveStartDate;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            
+            // Update DOM
+            daysEl.textContent = String(days).padStart(3, '0');
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minutesEl.textContent = String(minutes).padStart(2, '0');
+            secondsEl.textContent = String(seconds).padStart(2, '0');
+            
+            // Update counter text
+            counterText.textContent = `${days} Days • ${hours} Hours • ${minutes} Minutes • ${seconds} Seconds`;
+        }
+        
+        // Music Control
+        let musicPlaying = false;
+        
+        function toggleMusic() {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            } else {
+                backgroundMusic.play().catch(e => {
+                    console.log("Autoplay prevented. User interaction required.");
+                    // If autoplay is blocked, we'll show a message
+                    showEasterEgg("Click the music button to play romantic background music 🎵");
+                });
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }
+            musicPlaying = !musicPlaying;
+        }
+        
+        // Easter Egg Function
+        function showEasterEgg(message) {
+            easterEggText.textContent = message;
+            easterEgg.classList.add('show');
+            
+            setTimeout(() => {
+                easterEgg.classList.remove('show');
+            }, 4000);
+        }
+        
+        // Heart click easter egg
+        let heartClickCount = 0;
+        let lastHeartClickTime = 0;
+        
+        function handleHeartClick() {
+            const now = Date.now();
+            
+            // Reset count if more than 2 seconds between clicks
+            if (now - lastHeartClickTime > 2000) {
+                heartClickCount = 0;
+            }
+            
+            heartClickCount++;
+            lastHeartClickTime = now;
+            
+            if (heartClickCount >= 5) {
+                showEasterEgg("I choose you. Always. ❤️");
+                heartClickCount = 0;
+                
+                // Create heart explosion
+                createHeartExplosion();
+            }
+        }
+        
+        // Ring long press easter egg
+        let ringPressTimer;
+        
+        function startRingPress() {
+            ringPressTimer = setTimeout(() => {
+                showEasterEgg("Forever feels right with you 🫶");
+            }, 2000);
+        }
+        
+        function cancelRingPress() {
+            clearTimeout(ringPressTimer);
+        }
+        
+        // Initialize the page
+        function init() {
+            // Create background elements
+            createBackgroundElements();
+            
+            // Start love counter
+            updateLoveCounter();
+            setInterval(updateLoveCounter, 1000);
+            
+            // Event Listeners
+            yesBtn.addEventListener('click', () => {
+                createHeartExplosion();
+                setTimeout(() => showPage('page2'), 800);
+            });
+            
+            hellYesBtn.addEventListener('click', () => {
+                createHeartExplosion();
+                setTimeout(() => showPage('page2'), 800);
+            });
+            
+            noBtn.addEventListener('mouseover', handleNoButtonInteraction);
+            noBtn.addEventListener('click', handleNoButtonInteraction);
+            noBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const fakeEvent = {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY,
+                    target: this
+                };
+                handleNoButtonInteraction(fakeEvent);
+            });
+            
+            gift1.addEventListener('click', () => showPage('page3'));
+            gift2.addEventListener('click', () => showPage('page4'));
+            gift3.addEventListener('click', () => showPage('page5'));
+            
+            backFromGifts.addEventListener('click', () => showPage('page1'));
+            backFromGift1.addEventListener('click', () => showPage('page2'));
+            backFromGift2.addEventListener('click', () => showPage('page2'));
+            backFromGift3.addEventListener('click', () => showPage('page2'));
+            
+            musicToggle.addEventListener('click', toggleMusic);
+            
+            // Heart click easter egg
+            document.querySelectorAll('.heart, .btn-yes').forEach(el => {
+                el.addEventListener('click', handleHeartClick);
+            });
+            
+            // Ring long press easter egg
+            ring.addEventListener('mousedown', startRingPress);
+            ring.addEventListener('touchstart', startRingPress);
+            ring.addEventListener('mouseup', cancelRingPress);
+            ring.addEventListener('touchend', cancelRingPress);
+            ring.addEventListener('mouseleave', cancelRingPress);
+            
+            // Ring hover effect
+            ring.addEventListener('mouseover', () => {
+                // Increase sparkle
+                const diamond = document.querySelector('.diamond');
+                diamond.style.animationDuration = '0.5s';
+            });
+            
+            ring.addEventListener('mouseout', () => {
+                // Reset sparkle
+                const diamond = document.querySelector('.diamond');
+                diamond.style.animationDuration = '2s';
+            });
+            
+            // Random easter egg popup
+            setTimeout(() => {
+                if (Math.random() > 0.7) {
+                    showEasterEgg("Warning: Excessive cuteness detected 😌");
+                }
+            }, 10000);
+            
+            // Initialize text reveal animation for gift 1
+            const gift1Text = document.getElementById('gift1Text');
+            const lines = gift1Text.querySelectorAll('p');
+            lines.forEach((line, index) => {
+                line.style.opacity = '0';
+                line.style.animation = `textReveal 0.8s ease ${index * 0.5}s forwards`;
+            });
+            
+            // Try to autoplay music after user interaction
+            document.addEventListener('click', function initMusic() {
+                if (!musicPlaying) {
+                    backgroundMusic.play().then(() => {
+                        musicPlaying = true;
+                        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    }).catch(e => {
+                        // Autoplay was prevented
+                        console.log("Music autoplay prevented");
+                    });
+                    
+                    // Remove the event listener after first click
+                    document.removeEventListener('click', initMusic);
+                }
+            });
+        }
+        
+        // Start the application when page loads
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
