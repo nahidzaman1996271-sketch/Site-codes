@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Love ❤️ Please Unblock Me</title>
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffe6f2 0%, #fff0f5 50%, #ffe6f2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== FLOATING HEARTS BACKGROUND ===== */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b9d;
+            opacity: 0.7;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.2);
+            border: 3px solid #ffcce0;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .heart-icon {
+            font-size: 60px;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            animation: heartbeat 1.2s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #ff4081;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 0px rgba(255, 204, 224, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ff80ab;
+            font-weight: 300;
+        }
+
+        /* ===== MESSAGE SECTION ===== */
+        .message-box {
+            background: linear-gradient(to right, #fff5f8, #ffeef4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px dashed #ffb3d9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-box::before {
+            content: "💖";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 30px;
+            opacity: 0.3;
+        }
+
+        .message-box::after {
+            content: "💖";
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            font-size: 30px;
+            opacity: 0.3;
+        }
+
+        .message-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: #d81b60;
+            font-weight: 500;
+            padding: 10px;
+        }
+
+        /* ===== RESPONSE MESSAGE ===== */
+        .response-message {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ff4081;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #fff8fa, #fff5f8);
+            border: 2px solid #ffcce0;
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== BUTTONS CONTAINER ===== */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0 30px;
+            flex-wrap: wrap;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        /* ===== YES BUTTON (MAIN BUTTON) ===== */
+        .yes-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 25px 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            transform-origin: center;
+            min-width: 250px;
+        }
+
+        .yes-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .yes-btn:hover::before {
+            left: 100%;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+        }
+
+        .yes-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== NO BUTTON (SECONDARY) ===== */
+        .no-btn {
+            background: linear-gradient(135deg, #FF5252 0%, #FF8A80 100%);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 25px 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 82, 82, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+            min-width: 250px;
+            opacity: 1;
+        }
+
+        .no-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 82, 82, 0.35);
+        }
+
+        .no-btn.hiding {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.8);
+                visibility: hidden;
+            }
+        }
+
+        /* ===== FINAL STAGE STYLES ===== */
+        .final-stage .no-btn {
+            display: none !important;
+        }
+
+        .final-stage .yes-btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5);
+            z-index: 1000;
+            animation: pulseGlow 1.5s infinite alternate;
+            border-radius: 50%;
+            width: 80vmin;
+            height: 80vmin;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 80px 40px rgba(76, 175, 80, 0.7);
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 60px 30px rgba(76, 175, 80, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 100px 50px rgba(76, 175, 80, 0.9);
+            }
+        }
+
+        /* ===== SUCCESS SCREEN ===== */
+        .success-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 230, 242, 0.98);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            animation: fadeIn 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .success-content {
+            background: white;
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 30px 70px rgba(255, 107, 157, 0.3);
+            max-width: 600px;
+            width: 90%;
+            border: 3px solid #ffcce0;
+            animation: scaleUp 0.5s 0.3s both;
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #ff6b9d;
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .success-title {
+            font-size: 3.5rem;
+            color: #ff4081;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .success-message {
+            font-size: 1.8rem;
+            color: #d81b60;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.4);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+
+            .title {
+                font-size: 2.2rem;
+            }
+
+            .message-text {
+                font-size: 1.5rem;
+            }
+
+            .yes-btn, .no-btn {
+                font-size: 1.5rem;
+                padding: 20px 35px;
+                min-width: 200px;
+            }
+
+            .buttons-container {
+                gap: 20px;
+            }
+
+            .success-title {
+                font-size: 2.5rem;
+            }
+
+            .success-message {
+                font-size: 1.5rem;
+            }
+
+            .final-stage .yes-btn {
+                font-size: 2rem;
+                width: 90vmin;
+                height: 90vmin;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .message-text {
+                font-size: 1.3rem;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .yes-btn, .no-btn {
+                width: 100%;
+                max-width: 100%;
+                font-size: 1.3rem;
+                padding: 18px 30px;
+            }
+
+            .success-title {
+                font-size: 2rem;
+            }
+
+            .success-message {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div id="heartsContainer"></div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Header with heart icon -->
+        <div class="header">
+            <div class="heart-icon">❤️</div>
+            <h1 class="title">My Heart's Request</h1>
+            <p class="subtitle">A message straight from my heart to yours</p>
+        </div>
+
+        <!-- Main message -->
+        <div class="message-box">
+            <p class="message-text">
+                Hey love… I know you blocked me, but my heart is still trying. 
+                Will you please unblock me?
+            </p>
+        </div>
+
+        <!-- Response message area -->
+        <div class="response-message" id="responseMessage">
+            Your answer means everything to me 💖
+        </div>
+
+        <!-- Buttons container -->
+        <div class="buttons-container" id="buttonsContainer">
+            <!-- YES Button - This grows with each NO click -->
+            <button class="yes-btn" id="yesBtn">
+                ✅ Yes, I'll unblock you
+            </button>
+            
+            <!-- NO Button - This becomes less noticeable -->
+            <button class="no-btn" id="noBtn">
+                ❌ No
+            </button>
+        </div>
+
+        <!-- Footer note -->
+        <div style="margin-top: 30px; color: #ff80ab; font-size: 0.9rem;">
+            Made with 💖 and a hopeful heart
+        </div>
+    </div>
+
+    <!-- Success Screen (Hidden Initially) -->
+    <div class="success-screen" id="successScreen">
+        <div class="success-content">
+            <div class="success-icon">💕</div>
+            <h1 class="success-title">Thank You! ❤️</h1>
+            <p class="success-message">
+                Thank you for giving me another chance. 
+                I'll do better. I promise.
+            </p>
+            <button class="restart-btn" onclick="location.reload()">
+                💖 Reload This Message
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ===== DOM ELEMENTS =====
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const responseMessage = document.getElementById('responseMessage');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+        const successScreen = document.getElementById('successScreen');
+        const heartsContainer = document.getElementById('heartsContainer');
+        const container = document.querySelector('.container');
+
+        // ===== VARIABLES =====
+        let noClickCount = 0;
+        const maxNoClicks = 6; // After 6 clicks, we enter final stage
+        let yesScale = 1; // Starting scale for YES button
+        
+        // Playful messages for NO button clicks
+        const noButtonMessages = [
+            "Are you sure? 🥺",
+            "That hurts a little 💔",
+            "One more chance?",
+            "My heart is breaking...",
+            "Please reconsider? 💌",
+            "You're my everything...",
+            "I'll make it up to you!",
+            "Final chance? Pretty please? 🥺"
+        ];
+        
+        // ===== FLOATING HEARTS FUNCTIONS =====
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            
+            // Random starting position (off-screen bottom)
+            const startX = Math.random() * 100;
+            heart.style.left = `${startX}vw`;
+            heart.style.top = '100vh';
+            
+            // Random size
+            const size = Math.random() * 30 + 20;
+            heart.style.fontSize = `${size}px`;
+            
+            // Random animation duration and delay
+            const duration = Math.random() * 6 + 4;
+            const delay = Math.random() * 2;
+            
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.animationDelay = `${delay}s`;
+            
+            // Add to container
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, (duration + delay) * 1000);
+        }
+        
+        // Create initial floating hearts
+        function createInitialHearts() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 300);
+            }
+        }
+        
+        // ===== NO BUTTON CLICK HANDLER =====
+        noBtn.addEventListener('click', function() {
+            noClickCount++;
+            
+            // Update response message
+            const messageIndex = Math.min(noClickCount - 1, noButtonMessages.length - 1);
+            responseMessage.textContent = noButtonMessages[messageIndex];
+            responseMessage.classList.remove('fade-in');
+            void responseMessage.offsetWidth; // Trigger reflow
+            responseMessage.classList.add('fade-in');
+            
+            // Make YES button grow significantly
+            yesScale += 0.3; // Increase scale factor
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            // Make NO button less noticeable (smaller and faded)
+            const noScale = Math.max(0.5, 1 - (noClickCount * 0.1));
+            const noOpacity = Math.max(0.3, 1 - (noClickCount * 0.15));
+            noBtn.style.transform = `scale(${noScale})`;
+            noBtn.style.opacity = noOpacity;
+            
+            // Create a floating heart on click
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 200);
+            }
+            
+            // Check if we've reached final stage
+            if (noClickCount >= maxNoClicks) {
+                enterFinalStage();
+            }
+        });
+        
+        // ===== FINAL STAGE FUNCTION =====
+        function enterFinalStage() {
+            // Add final stage class to body
+            document.body.classList.add('final-stage');
+            
+            // Hide the NO button with animation
+            noBtn.classList.add('hiding');
+            
+            // Make container background more romantic
+            container.style.background = 'rgba(255, 240, 245, 0.9)';
+            container.style.borderColor = '#ff6b9d';
+            
+            // Update response message
+            responseMessage.textContent = "The universe has decided... YES is the only way! 💫";
+            responseMessage.style.fontSize = '1.8rem';
+            responseMessage.style.color = '#ff4081';
+            responseMessage.style.fontWeight = 'bold';
+            
+            // Make YES button fill the screen (forced interaction)
+            setTimeout(() => {
+                yesBtn.style.position = 'fixed';
+                yesBtn.style.top = '50%';
+                yesBtn.style.left = '50%';
+                yesBtn.style.transform = 'translate(-50%, -50%) scale(5)';
+                yesBtn.style.zIndex = '1000';
+                yesBtn.style.animation = 'pulseGlow 1.5s infinite alternate';
+                yesBtn.style.borderRadius = '50%';
+                yesBtn.style.width = '80vmin';
+                yesBtn.style.height = '80vmin';
+                yesBtn.style.display = 'flex';
+                yesBtn.style.alignItems = 'center';
+                yesBtn.style.justifyContent = 'center';
+                yesBtn.style.fontSize = '2.5rem';
+                yesBtn.style.boxShadow = '0 0 80px 40px rgba(76, 175, 80, 0.7)';
+                
+                // Create lots of hearts
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart();
+                    }, i * 100);
+                }
+            }, 500);
+        }
+        
+        // ===== YES BUTTON CLICK HANDLER =====
+        yesBtn.addEventListener('click', function() {
+            // Show success screen
+            successScreen.style.display = 'flex';
+            
+            // Create celebration hearts
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 50);
+            }
+            
+            // Update response message
+            responseMessage.textContent = "You've made me the happiest person alive! 💖";
+        });
+        
+        // ===== INITIALIZATION =====
+        window.addEventListener('load', function() {
+            // Create initial floating hearts
+            createInitialHearts();
+            
+            // Create hearts periodically
+            setInterval(() => {
+                if (Math.random() > 0.5) {
+                    createFloatingHeart();
+                }
+            }, 2000);
+            
+            // Initial message animation
+            setTimeout(() => {
+                responseMessage.textContent = "I'm waiting with a hopeful heart 💌";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
